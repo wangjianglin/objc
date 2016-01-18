@@ -169,11 +169,11 @@
     NSURL* theUrl = [theRequest URL];
     
     NSString * absoluteString = [theUrl absoluteString];
-#if DEBUG
-    if ([absoluteString rangeOfString:@"http://init.icloud-analysis.com"].length != 0) {
-        return YES;
-    }
-#endif
+//#if DEBUG
+//    if ([absoluteString rangeOfString:@"http://init.icloud-analysis.com"].length != 0) {
+//        return YES;
+//    }
+//#endif
     
     if([absoluteString rangeOfString:@":0000/"].length != 0){
            return YES;
@@ -209,12 +209,12 @@
 //
 //-(void)startLoadingImpl{
 
-#if DEBUG
-    NSString * absoluteString = [[self.request URL] absoluteString];
-    if ([absoluteString rangeOfString:@"http://init.icloud-analysis.com"].length != 0) {
-        return;
-    }
-#endif
+//#if DEBUG
+//    NSString * absoluteString = [[self.request URL] absoluteString];
+//    if ([absoluteString rangeOfString:@"http://init.icloud-analysis.com"].length != 0) {
+//        return;
+//    }
+//#endif
 
     int flag = [[self.request valueForHTTPHeaderField:@"web-flag"] intValue];
     NSString * name = [self.request valueForHTTPHeaderField:@"plugin"];
