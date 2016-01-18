@@ -15,8 +15,8 @@ Pod::Spec.new do |s|
 #  summary should be tweet-length, and the description more in depth.
 #
 
-s.name         = "LinUtil"
-#s.module_name  = "LinUtil"
+s.name         = "LinCore"
+s.module_name  = "LinCore"
 s.version      = "0.0.1"
 s.summary      = "A short description of util."
 
@@ -94,7 +94,71 @@ s.source       = { :git => "https://github.com/wangjianglin/objc.git"}
 #
 
 #s.source_files  = "Classes", "util/**/*.{h,m,swift}"
-s.source_files  = "util/util/*.{h,m,mm}"
+
+s.source_files  = "core/core/*.{h,m,mm}"
+
+s.subspec 'camera' do |camera|
+camera.source_files = "core/core/camera/*.{h,m,mm}"
+
+camera.subspec 'SCRecorder' do |recorder|
+recorder.source_files = "core/core/camera/SCRecorder/*.{h,m,mm}"
+end
+
+end
+
+s.subspec 'MJRefresh' do |mjrefresh|
+mjrefresh.source_files = "core/core/MJRefresh/*.{h,m,mm}"
+end
+
+
+s.subspec 'CheckBox' do |checkBox|
+checkBox.source_files = "core/core/CheckBox/*.{h,m,mm}"
+end
+
+s.subspec 'Form' do |form|
+form.source_files = "core/core/Form/*.{h,m,mm}"
+end
+
+s.subspec 'ImagePicker' do |imagePicker|
+imagePicker.source_files = "core/core/ImagePicker/*.{h,m,mm}"
+end
+
+#s.subspec 'Indicator' do |indicator|
+#  indicator.source_files = "core/core/Indicator/*.{h,m,mm}"
+#end
+
+s.subspec 'Message' do |message|
+message.source_files = "core/core/Message/*.{h,m,mm}"
+end
+
+s.subspec 'Pick' do |pick|
+pick.source_files = "core/core/Pick/*.{h,m,mm}"
+end
+
+s.subspec 'MRProgress' do |progress|
+progress.source_files = "core/core/MRProgress/*.{h,m,mm}"
+
+progress.subspec 'Blur' do |blur|
+blur.source_files = "core/core/MRProgress/Blur/*.{h,m,mm}";
+end
+
+progress.subspec 'Components' do |components|
+components.source_files = "core/core/MRProgress/Components/*.{h,m,mm}"
+end
+
+progress.subspec 'Utils' do |utils|
+utils.source_files = "core/core/MRProgress/Utils/*.{h,m,mm}"
+end
+
+end
+
+
+s.subspec 'Storyboards' do |storyboards|
+storyboards.source_files = "core/core/Storyboards/*.{h,m,mm}"
+end
+
+
+
 
 
 #s.subspec 'SQLite' do |sqlite|
@@ -105,9 +169,7 @@ s.source_files  = "util/util/*.{h,m,mm}"
 
 #s.exclude_files = "Classes/Exclude"
 
-s.public_header_files = "util/*.h"
-#s.private_header_files = "util/SQLite/*.h"
-#s.public_header_files = "util/LinUtil.h"
+s.public_header_files = "core/core/*.h"
 
 
 # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -134,7 +196,7 @@ s.public_header_files = "util/*.h"
 # s.frameworks = "SomeFramework", "AnotherFramework"
 
 #s.library   = "sqlite3"
-s.libraries        = 'sqlite3'
+#s.libraries        = 'sqlite3'
 # s.libraries = "iconv", "xml2"
 
 
@@ -156,7 +218,7 @@ s.libraries        = 'sqlite3'
 #              }
 #s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO', 'OTHER_LDFLAGS' => '-weak-lswiftXCTest', 'FRAMEWORK_SEARCH_PATHS' => '$(inherited) "$(PLATFORM_DIR)/Developer/Library/Frameworks"',
 #'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'}
-#s.preserve_path    = 'util/*'
+s.preserve_path    = 'util/*'
 
 #"xcconfig": {
 #    "SWIFT_INCLUDE_PATHS": "${PODS_ROOT}/SQLite.swift/SQLite3"
@@ -165,7 +227,7 @@ s.libraries        = 'sqlite3'
 
 #s.xcconfig = {"MACH_O_TYPE" => "staticlib"}
 
-#s.dependency "JSONKit", "~> 1.4"
+s.dependency "LinClient", s.version.to_s
 
 #s.dependency 'ObjectiveCPod', '~>3.2.1'
 
