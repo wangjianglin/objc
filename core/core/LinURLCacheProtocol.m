@@ -156,8 +156,8 @@ static NSString *LinURLCachingHeader = @"X-Lin-Cache";
             mimeType = @"image/gif";
         }else if([[self.request.URL path] hasSuffix:@".jpg"]){
             mimeType = @"image/jpeg";
-        }else if([[self.request.URL path] hasSuffix:@".pdf"]){
-            mimeType = @"application/pdf";
+//        }else if([[self.request.URL path] hasSuffix:@".pdf"]){
+//            mimeType = @"application/pdf";
         }
         [self sendResponseWithResponseCode:200 data:data mimeType:mimeType];
     }else{
@@ -229,9 +229,12 @@ static NSString *LinURLCachingHeader = @"X-Lin-Cache";
     NSFileManager * fm = [NSFileManager defaultManager];
     if(self.data != nil){
         [fm createFileAtPath:self.cacheFile contents:self.data attributes:nil];
-        for (int n=0; n<1000; n++) {
-            [fm createFileAtPath:[[NSString alloc] initWithFormat:@"%@%d",self.cacheFile,n] contents:self.data attributes:nil];
-        }
+//        for (int n=0; n<1000; n++) {
+//            [fm createFileAtPath:[[NSString alloc] initWithFormat:@"%@%d",self.cacheFile,n] contents:self.data attributes:nil];
+//        }
+//        
+//        NSUInteger fs = [fm contentsOfDirectoryAtPath:LinURLCacheProtocol.cachePath error:nil].count;
+//        NSLog(@"file size:%lu",(unsigned long)fs);
     }
     [self setConnection:nil];
     [self setData:nil];

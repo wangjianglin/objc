@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E6F14F31BAB278100BC05A6 /* LinCore.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E6F14F21BAB278100BC05A6 /* LinCore.bundle */; settings = {ASSET_TAGS = (); }; };
+		3E0F5F7B1C71C6A30043CDFE /* AppStoreUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E0F5F791C71C6A30043CDFE /* AppStoreUpdate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E0F5F7C1C71C6A30043CDFE /* AppStoreUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0F5F7A1C71C6A30043CDFE /* AppStoreUpdate.m */; };
+		3E0F5F7F1C71C6D50043CDFE /* EnterpriseUpdate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E0F5F7D1C71C6D50043CDFE /* EnterpriseUpdate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E0F5F801C71C6D50043CDFE /* EnterpriseUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0F5F7E1C71C6D50043CDFE /* EnterpriseUpdate.m */; };
+		3E6F14F31BAB278100BC05A6 /* LinCore.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3E6F14F21BAB278100BC05A6 /* LinCore.bundle */; };
 		3EA8A9A11B843DCC0043922A /* LinCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA8A9951B843DCC0043922A /* LinCore.framework */; };
 		3EA8A9A81B843DCC0043922A /* coreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8A9A71B843DCC0043922A /* coreTests.m */; };
 		3EA8AD461B846C500043922A /* LinUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA8AD451B846C500043922A /* LinUtil.framework */; };
@@ -263,6 +267,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E0F5F791C71C6A30043CDFE /* AppStoreUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppStoreUpdate.h; path = update/AppStoreUpdate.h; sourceTree = "<group>"; };
+		3E0F5F7A1C71C6A30043CDFE /* AppStoreUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppStoreUpdate.m; path = update/AppStoreUpdate.m; sourceTree = "<group>"; };
+		3E0F5F7D1C71C6D50043CDFE /* EnterpriseUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnterpriseUpdate.h; path = update/EnterpriseUpdate.h; sourceTree = "<group>"; };
+		3E0F5F7E1C71C6D50043CDFE /* EnterpriseUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnterpriseUpdate.m; path = update/EnterpriseUpdate.m; sourceTree = "<group>"; };
 		3E6F14F21BAB278100BC05A6 /* LinCore.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LinCore.bundle; sourceTree = "<group>"; };
 		3EA8A9951B843DCC0043922A /* LinCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LinCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EA8A9991B843DCC0043922A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -531,6 +539,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E0F5F781C71C6780043CDFE /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				3E0F5F791C71C6A30043CDFE /* AppStoreUpdate.h */,
+				3E0F5F7A1C71C6A30043CDFE /* AppStoreUpdate.m */,
+				3E0F5F7D1C71C6D50043CDFE /* EnterpriseUpdate.h */,
+				3E0F5F7E1C71C6D50043CDFE /* EnterpriseUpdate.m */,
+			);
+			name = Update;
+			sourceTree = "<group>";
+		};
 		3EA8A98B1B843DCC0043922A = {
 			isa = PBXGroup;
 			children = (
@@ -554,6 +573,7 @@
 		3EA8A9971B843DCC0043922A /* core */ = {
 			isa = PBXGroup;
 			children = (
+				3E0F5F781C71C6780043CDFE /* Update */,
 				3EA8AD4D1B846EF10043922A /* ImageViews.m */,
 				3EA8AD4E1B846EF10043922A /* ImagesView.m */,
 				3EA8AD4F1B846EF10043922A /* camera */,
@@ -942,6 +962,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E0F5F7B1C71C6A30043CDFE /* AppStoreUpdate.h in Headers */,
+				3E0F5F7F1C71C6D50043CDFE /* EnterpriseUpdate.h in Headers */,
 				3EA8AFE21B84DC810043922A /* UIButtons.h in Headers */,
 				3EA8AEC51B846EF10043922A /* LocalStorage.h in Headers */,
 				3EA8AECE1B846EF10043922A /* MRBlurView.h in Headers */,
@@ -1172,6 +1194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EA8AF071B846EF10043922A /* RBStoryboardPushSegue.m in Sources */,
+				3E0F5F801C71C6D50043CDFE /* EnterpriseUpdate.m in Sources */,
 				3EA8AEA41B846EF10043922A /* FormSectionDescriptor.m in Sources */,
 				3EA8AF2F1B846EF10043922A /* QBImagePickerAssetCell.m in Sources */,
 				3EA8AE571B846EF10043922A /* CIImageRendererUtils.m in Sources */,
@@ -1182,6 +1205,7 @@
 				3EA8AE8E1B846EF10043922A /* Vedios.m in Sources */,
 				3EA8AEC21B846EF10043922A /* ScrollImagesView.m in Sources */,
 				3EA8AE7D1B846EF10043922A /* SCRecordSessionSegment.m in Sources */,
+				3E0F5F7C1C71C6A30043CDFE /* AppStoreUpdate.m in Sources */,
 				3EA8AE9E1B846EF10043922A /* FormOptionsSelectorController.m in Sources */,
 				3EA8AE621B846EF10043922A /* SCFilter.m in Sources */,
 				3EA8AE921B846EF10043922A /* FormButtonCell.m in Sources */,

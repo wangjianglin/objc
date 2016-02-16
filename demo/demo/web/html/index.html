@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh_CN">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta http-equiv="Content-type" content="">
+    <meta http-equiv="access-control-allow-credentials" content="true">
+    <meta http-equiv="Access-Control-Allow-Headers" content="Accept, Content-Type, If-None-Match, X-If-None-Match">
+    <meta http-equiv="Cache-Control" content="on">
+    <meta name="apple-mobile-web-app-capable" content="yes" /><!-- home screen app 全屏 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 状态栏 -->
+    <!-- <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+                                             
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+                                             
+                                             
+<link rel="apple-touch-icon" sizes="114x114" href="./img/index_logo.png"> -->
+<title>demo</title>
+                                            
+<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-3.3.2.css">
+    <link rel="stylesheet" type="text/css" href="css/angular-block-ui/angular-block-ui-0.2.0.css"> -->
+    <!--<script type='text/javascript' src='http://tb.53kf.com/kf.php?arg=10099210&style=1'></script>-->
+                                            
+                                            
+    <!--<script src="js/requirejs/require-2.1.16.min.js" data-main="app/app.js?var=" onload="onpageload();"></script>-->
+
+    
+</script>
+    </head>
+    <body style="margin: 0px;padding: 0px;border: 0px;overflow: hidden;" scroll="no">
+        
+        <!-- <div class="view-tabbar" lin-tabbar> -->
+        
+        <!-- </div>  -->
+        <div id="margin-div" style="position:absolute;width:100%;top:0px;bottom:0px;overflow: hidden;">
+            <div id="loading-id" style="text-align:center;position: absolute;width:100%;height:100%;background-color: transparent;">
+                <div style="position: absolute;width:100%;height:50%;top:50%;background-color: transparent;">
+                    <div style="position: absolute;width:100%;height:50px;top:-25px;background-color: transparent;font-size:14pt;color:#222;">
+                        正在拼命为您加载...
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+        </div>
+    </body>
+</html>
+<script type='text/javascript' src='stacktrace.js'></script>
+
+<script type='text/javascript'>
+    
+
+
+//var callback = function(stackframes) {
+//    var stringifiedStack = stackframes.map(function(sf) {
+ //                                          return sf.toString();
+ //                                          }).join('\n');
+ //                                          console.log(stringifiedStack);
+//};
+
+//var errback = function(err) { console.log(err.message); };
+
+//StackTrace.get().then(callback).catch(errback);
+
+    window.onerror = function(msg, file, line, col, error){
+        console.error(msg);
+        if(error){
+            console.error(error.stack);
+        }
+        console.error(window.Error().stack)
+    }
+    
+    var a = 5/0;
+    console.log(a);
+    c = b.a.c;
+    throw 'aaaa'
+</script>

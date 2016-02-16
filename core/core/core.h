@@ -113,6 +113,8 @@
 #import "LocalStorage.h"
 #import "UIButtons.h"
 
+#import "AppStoreUpdate.h"
+
 #endif
 
 

@@ -14,15 +14,16 @@
 #import <objc/message.h>
 #import "LinCore/core.h"
 #import "AsynResult.h"
+#import <JavaScriptCore/JavaScriptCore.h>
 
-#if DEBUG
-
-@interface WebCache : NSObject
-+(void)empty;
-+(void)setDisabled:(BOOL)arg1;
-@end
-
-#endif
+//#if DEBUG
+//
+//@interface WebCache : NSObject
+//+(void)empty;
+//+(void)setDisabled:(BOOL)arg1;
+//@end
+//
+//#endif
 
 
 @interface LinWebURLProtocol : NSURLProtocol
@@ -318,6 +319,36 @@
 }
 -(void)loadView{
     _webView = [[UIWebView alloc] init];
+    //    let context = self.webView.valueForKeyPath("documentView.webView.mainFrame.javaScriptContext") as! JSContext
+//    JSContext * context = [_webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+////    let logFunction : @convention(block) (String) -> Void =
+////    {
+////        (msg: String) in
+////        
+////        NSLog("Console: %@", msg)
+////    }
+////    context.objectForKeyedSubscript("console").setObject(unsafeBitCast(logFunction, AnyObject.self),
+////                                                         forKeyedSubscript: "log")
+//    context[@"console"][@"log"] = ^(JSValue * msg) {
+//        NSLog(@"JavaScript %@ log message: %@", [JSContext currentContext], msg);
+//    };
+//    
+//    context[@"console"][@"error"] = ^(JSValue * msg) {
+//        NSLog(@"JavaScript %@ error message: %@", [JSContext currentContext], msg);
+//    };
+//
+//    context[@"console"][@"trace"] = ^(JSValue * msg) {
+//        NSLog(@"JavaScript %@ trace message: %@", [JSContext currentContext], msg);
+//    };
+//
+//    
+//    context.exceptionHandler = ^(JSContext *context, JSValue *exception){
+//        NSLog(@"exception message:%@",exception);
+//    };
+    
+    
+    
+    
     self.view = _webView;
     _webView.mediaPlaybackRequiresUserAction = NO;
     
@@ -337,8 +368,8 @@
     
 #if DEBUG
     cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-    [WebCache setDisabled:YES];
-    [WebCache empty];
+//    [WebCache setDisabled:YES];
+//    [WebCache empty];
     
 //    清除cookies
     NSHTTPCookie *cookie;

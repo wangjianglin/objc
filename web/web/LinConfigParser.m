@@ -102,29 +102,32 @@
     //        return;
     //    }
         
-        NSURL* url = [NSURL fileURLWithPath:path];
+        if (path != nil) {
         
-        NSXMLParser * configParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-//        if (configParser == nil) {
-//            NSLog(@"Failed to initialize XML parser.");
-//            return;
-//        }
-        [configParser setDelegate:((id < NSXMLParserDelegate >)delegate)];
-        [configParser parse];
-        
-        // Get the plugin dictionary, whitelist and settings from the delegate.
-    //    self.pluginsMap = delegate.pluginsDict;
-//        self.startupPluginNames = delegate.startupPluginNames;
-//    //    self.whitelist = [[CDVWhitelist alloc] initWithArray:delegate.whitelistHosts];
-//        self.settings = delegate.settings;
-//        
-//        // And the start folder/page.
-//    //    if(self.wwwFolderName == nil){
-//    //        self.wwwFolderName = @"www";
-//    //    }
-//        self.startPage = delegate.startPage;
-        if (self.startPage == nil) {
-            self.startPage = @"index.html";
+            NSURL* url = [NSURL fileURLWithPath:path];
+            
+            NSXMLParser * configParser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    //        if (configParser == nil) {
+    //            NSLog(@"Failed to initialize XML parser.");
+    //            return;
+    //        }
+            [configParser setDelegate:((id < NSXMLParserDelegate >)delegate)];
+            [configParser parse];
+            
+            // Get the plugin dictionary, whitelist and settings from the delegate.
+        //    self.pluginsMap = delegate.pluginsDict;
+    //        self.startupPluginNames = delegate.startupPluginNames;
+    //    //    self.whitelist = [[CDVWhitelist alloc] initWithArray:delegate.whitelistHosts];
+    //        self.settings = delegate.settings;
+    //        
+    //        // And the start folder/page.
+    //    //    if(self.wwwFolderName == nil){
+    //    //        self.wwwFolderName = @"www";
+    //    //    }
+    //        self.startPage = delegate.startPage;
+            if (self.startPage == nil) {
+                self.startPage = @"index.html";
+            }
         }
     }
     return self;
