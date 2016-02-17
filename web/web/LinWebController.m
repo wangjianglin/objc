@@ -249,7 +249,7 @@
     }
     
     if ([r isKindOfClass:[NSString class]]) {
-        [self sendResponseText:r];
+        [self sendResponseText:[[[Json alloc] initWithObject:r] description]];
     }
     else if ([r isKindOfClass:[Json class]]) {
         [self sendResponseText:[r description]];
