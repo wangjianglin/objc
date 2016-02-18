@@ -60,10 +60,12 @@
 @interface AsynResult(){
     LinWebURLProtocol * _web;
     Json * _result;
-    NSLock * lock;
+//    NSLock * lock;
+    AutoResetEvent * set;
 }
 
--(void)setWeb:(LinWebURLProtocol*)web;
+//-(void)setWeb:(LinWebURLProtocol*)web;
+-(NSString*)waitResult;
 
 @end
 
@@ -72,26 +74,36 @@
 -(instancetype)init{
     self = [super init];
     if(self){
-        lock = [[NSLock alloc] init];
+//        lock = [[NSLock alloc] init];
+        set = [[AutoResetEvent alloc] init];
     }
     return self;
 }
--(void)setWeb:(LinWebURLProtocol*)web{
-    [lock lock];
+//-(void)setWeb:(LinWebURLProtocol*)web{
+//    [lock lock];
+//    if (_result != nil) {
+//        //[web sendResponseText:[_result description]];
+//    }
+//    _web = web;
+//    [lock unlock];
+//}
+
+-(NSString*)waitResult{
+    [set waitOne];
     if (_result != nil) {
-        [web sendResponseText:[_result description]];
+        return [_result description];
     }
-    _web = web;
-    [lock unlock];
+    return nil;
 }
 
 -(void)setResult:(Json *)result{
-    [lock lock];
-    if(_web != nil){
-        [_web sendResponseText:[result description]];
-    }
+//    [lock lock];
+//    if(_web != nil){
+//        [_web sendResponseText:[result description]];
+//    }
     _result = result;
-    [lock unlock];
+    [set set];
+//    [lock unlock];
 }
 
 @end
@@ -106,7 +118,7 @@
     static LinConfigParser * configParser;
     dispatch_once(&_webs_once_t, ^{
         _webs = [[NSMutableArray alloc] init];
-        [NSURLProtocol registerClass:[LinWebURLProtocol class]];
+        //[NSURLProtocol registerClass:[LinWebURLProtocol class]];
         configParser = [[LinConfigParser alloc] init];
     });
     return _webs;
@@ -181,25 +193,32 @@
        }
     return NO;
 }
--(void)actions:(NSString*)action{
++(NSString*)actions:(NSString*)action{
     if ([action isEqualToString:@"platform"]) {
-        [self sendResponseText:@"\"ios\""];
+//        [self sendResponseText:@"\"ios\""];
+        return @"ios";
     }else if ([action isEqualToString:@"productName"]){
         UIDevice * device = [UIDevice currentDevice];
-        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",device.name]];
+//        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",device.name]];
+        return device.name;
     }else if ([action isEqualToString:@"versionName"]){
         UIDevice * device = [UIDevice currentDevice];
-        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",device.systemVersion]];
+//        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",device.systemVersion]];
+        return device.systemVersion;
     }else if ([action isEqualToString:@"version"]){
         UIDevice * device = [UIDevice currentDevice];
-        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%f\"",[device.systemVersion floatValue]]];
+//        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%f\"",[device.systemVersion floatValue]]];
+        return [[NSString alloc] initWithFormat:@"%f",[device.systemVersion floatValue]];
     }else if ([action isEqualToString:@"model"]){
         UIDevice * device = [UIDevice currentDevice];
-        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",device.model]];
+//        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",device.model]];
+        return [[NSString alloc] initWithFormat:@"%@",device.model];
     }else if ([action isEqualToString:@"uuid"]){
 //        UIDevice * device = [UIDevice currentDevice];
-        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",@"------------"]];
+//        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",@"------------"]];
+        return @"------------";
     }
+    return nil;
 }
 -(void)startLoading{
 //    __weak LinWebURLProtocol *wself = self;
@@ -216,19 +235,26 @@
 //        return;
 //    }
 //#endif
-
+    
     int flag = [[self.request valueForHTTPHeaderField:@"web-flag"] intValue];
     NSString * name = [self.request valueForHTTPHeaderField:@"plugin"];
     NSString * action = [self.request valueForHTTPHeaderField:@"action"];
+
+    NSString * params = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
+    
+    [self sendResponseText:[LinWebURLProtocol pluginAction:name action:action params:params flag:flag]];
+}
+
++(NSString*)pluginAction:(NSString*)name action:(NSString*)action params:(NSString*)params flag:(int)flag{
+    
     if (name == nil || [name isEqualToString:@""]) {
-        [self actions:action];
-        return;
+        return [LinWebURLProtocol actions:action];
     }
     LinWebPlugin * plugin = [LinWebURLProtocol plugin:name flag:flag];
     id r = nil;
     SEL actionSel = NSSelectorFromString([[NSString alloc] initWithFormat:@"%@:",action]);
     if([plugin respondsToSelector:actionSel]){
-        NSString * params = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
+        
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "w"
         r = [plugin performSelector:actionSel withObject:[Json parse:params]];
@@ -237,28 +263,42 @@
     }else{
         actionSel = NSSelectorFromString([[NSString alloc] initWithFormat:@"%@",action]);
         if([plugin respondsToSelector:actionSel]){
-            NSString * params = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
+//            NSString * params = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "w"
             r = [plugin performSelector:actionSel withObject:nil];
 #pragma clang diagnostic pop
         }else{
-            [self sendResponseText:@""];
-            return;
+//            [self sendResponseText:@""];
+            return @"";
         }
     }
     
-    if ([r isKindOfClass:[NSString class]]) {
-        [self sendResponseText:[[[Json alloc] initWithObject:r] description]];
-    }
-    else if ([r isKindOfClass:[Json class]]) {
-        [self sendResponseText:[r description]];
+//    if ([r isKindOfClass:[NSString class]]) {
+//        [self sendResponseText:[[[Json alloc] initWithObject:r] description]];
+//    }
+//    else
+    NSString * rString = nil;
+    if ([r isKindOfClass:[Json class]]) {
+//        [self sendResponseText:[r description]];
+        rString = [r description];
     }else if ([r isKindOfClass:[AsynResult class]]){
         AsynResult * asynResult = (AsynResult*)r;
-        [asynResult setWeb:self];
+        //[asynResult setWeb:self];
+        rString = [asynResult waitResult];
+    }else if(r != nil){
+//        [self sendResponseText:[[[Json alloc] initWithObject:r] description]];
+        rString = [[[Json alloc] initWithObject:r] description];
     }else{
-        [self sendResponseText:@"{}"];
+//        [self sendResponseText:@"{}"];
+        rString = @"{}";
     }
+    
+    if (rString == nil) {
+        rString = @"{}";
+    }
+    
+    return rString;
 }
 
 - (void)sendResponseText:(NSString*)result
@@ -320,7 +360,26 @@
 -(void)loadView{
     _webView = [[UIWebView alloc] init];
     //    let context = self.webView.valueForKeyPath("documentView.webView.mainFrame.javaScriptContext") as! JSContext
-//    JSContext * context = [_webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    JSContext * context = [_webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    
+    context[@"IOSBridge"] = ^(JSValue * name,JSValue * action,JSValue * params){
+//      return "ok.";
+//        NSString * value = @"000";//[[JSValue alloc] init];
+////        [value s]
+//        return value;
+        
+        return [LinWebURLProtocol pluginAction:[name toString] action:[action toString] params:[params toString] flag:(int)self.view.tag];
+    };
+
+//    context[@"IOSBridge"] = ^() {
+//        NSArray *args = [JSContext currentArguments];
+//        for (id obj in args) {
+//            NSLog(@"%@",obj);
+//        }
+//    };
+    
+//     [context objectForKeyedSubscript:@"IOSBridge"] setObject:<#(id)#> forKeyedSubscript:<#(NSObject<NSCopying> *)#>
+    
 ////    let logFunction : @convention(block) (String) -> Void =
 ////    {
 ////        (msg: String) in

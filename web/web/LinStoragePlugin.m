@@ -22,10 +22,11 @@
     NSString * item = args[@"item"].asString;
     NSString * value = [ChromeStorage getItem:item];
     if(value == nil){
-        return @"{}";
+//        return @"{}";
+        return [[Json alloc] init];
     }
-    return value;
-//    return [Json parse:value];
+//    return value;
+    return [Json parse:value];
 //    return [[Json alloc] initWithObject:value];
 }
 -(Json*)removeItem:(Json*)args{
