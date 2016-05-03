@@ -8,6 +8,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+#import "HttpDNS.h"
 
 
 typedef NS_ENUM(NSInteger, HttpMethod) {
@@ -52,13 +53,14 @@ typedef NS_ENUM(NSInteger, HttpMethod) {
 
 @end
 
+
 @class HttpRequestSerializer;
 @protocol HttpResponseSerializer;
 
 
 ///// Configures NSURLSession Request for HTTPOperation. Also provides convenience methods for easily running HTTP Request.
 @interface HttpTask : NSObject//<NSURLSessionDelegate,NSURLSessionTaskDelegate>
-
+@property(weak) id<HttpDNS> httpDNS;
 @property(atomic,readonly) HttpRequestSerializer * requestSerializer;
 @property(atomic,readonly) id<HttpResponseSerializer> responseSerializer;
 @property(atomic) NSURLCredential * (^auth)(NSURLAuthenticationChallenge *);

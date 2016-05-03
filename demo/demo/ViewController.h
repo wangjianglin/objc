@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController<HttpDNSDegradationDelegate> : UIViewController
 
+-(IBAction)http:(NSObject*)_;
 
 @end
 

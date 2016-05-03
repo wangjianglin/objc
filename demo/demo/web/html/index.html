@@ -69,6 +69,8 @@
 
 //StackTrace.get().then(callback).catch(errback);
 
+if(IOSBridge)
+console.log(IOSBridge);
     window.onerror = function(msg, file, line, col, error){
         console.error(msg);
         if(error){
@@ -77,8 +79,8 @@
         console.error(window.Error().stack)
     }
     
-    var a = 5/0;
-    console.log(a);
-    c = b.a.c;
-    throw 'aaaa'
+    //var a = 5/0;
+    //console.log(a);
+    //c = b.a.c;
+    //throw 'aaaa'
 </script>

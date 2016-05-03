@@ -9,6 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HttpPackage.h"
+#import "HttpDNS.h"
 
 @interface HttpError : NSObject
 
@@ -30,6 +31,7 @@
 @property NSString * commUrl;
 @property BOOL mainThread;
 @property BOOL isDebug;
+@property id<HttpDNS> httpDNS;
 @property(readonly) NSString * name;
 @property void (^httprequestComplete)(HttpPackage *,NSObject*,NSArray*);
 @property void (^httprequestFault)(HttpPackage *,HttpError*);
@@ -78,6 +80,7 @@
 //@property void (^httprequestFault)(HttpPackage *,HttpError*);
 //@property void (^httprequest)(HttpPackage *);
 
+
 +(void (^)(HttpPackage * package))httprequest;
 
 +(void (^)(HttpPackage * package, NSObject *obj, NSArray *warning))httprequestComplete;
@@ -95,6 +98,9 @@
 
 +(BOOL)isDebug;
 +(void)setIsDebug:(BOOL)isDebug;
+
++(id<HttpDNS>)getHttpDNS;
++(void)setHttpDNS:(id<HttpDNS>)httpDNS;
 
 +(BOOL)mainThread;
 +(void)setMainThread:(BOOL)mainThread;

@@ -13,6 +13,7 @@
 #import <LinUtil/util.h>
 
 #import <UIKit/UIKit.h>
+#import "HttpDNS.h"
 
 
 @interface BackgroundBlocks(){
@@ -343,13 +344,30 @@
         NSString * split = [url hasPrefix:@"/"] ? @"" : @"/";
         url = [[NSString alloc] initWithFormat:@"%@%@%@",self->baseURL,split,url];
     }
-//    var urlVal = url
-    //        //probably should change the 'http' to something more generic
-    //        if !url.hasPrefix("http") && self.baseURL != nil {
-    //            var split = url.hasPrefix("/") ? "" : "/"
-    //            urlVal = "\(self.baseURL!)\(split)\(url)"
-    //        }
+    
     NSURL * nsurl = [[NSURL alloc] initWithString:url];
+    
+    id<HttpDNS> httpDNS = self.httpDNS;
+    NSString* ip = nil;
+    NSString * hostName = nil;
+    if(httpDNS != nil){
+        hostName = nsurl.host;
+        ip = [httpDNS getIpByHost:hostName];
+        if (ip) {
+//            // 通过HTTPDNS获取IP成功，进行URL替换和HOST头设置
+//            NSLog(@"Get IP(%@) for host(%@) from HTTPDNS Successfully!", ip, url.host);
+            NSRange hostFirstRange = [url rangeOfString: hostName];
+            if (NSNotFound != hostFirstRange.location) {
+                NSString* newUrl = [url stringByReplacingCharactersInRange:hostFirstRange withString:ip];
+                nsurl = [[NSURL alloc] initWithString:newUrl];
+            }else{
+                ip = nil;
+            }
+        }
+        
+        
+    }
+//    NSURL * nsurl = [[NSURL alloc] initWithString:url];
 //    NSObject * result = [self.requestSerializer createRequest:nsurl method:method parameters:parameters isMulit:isMulti];
     
 //    -(NSMutableURLRequest*)createRequest:(NSURL *)url method:(HttpMethod)method parameters:(NSDictionary*)parameters isMulti:(BOOL)isMulti error:(NSError**)error;
@@ -364,6 +382,9 @@
     //        result.request.setValue("",forHTTPHeaderField:HTTP_COMM_PROTOCOL);
     if (isDebug) {
         [request setValue:@"" forHTTPHeaderField:HTTP_COMM_PROTOCOL_DEBUG];
+    }
+    if (ip) {
+        [request setValue:hostName forHTTPHeaderField:@"Host"];
     }
     //        if isDebug {
     //            result.request.setValue("",forHTTPHeaderField:HTTP_COMM_PROTOCOL_DEBUG);
@@ -738,6 +759,7 @@
         NSString * newUrl = request.URL.absoluteString;
         if (queryString.length > 0) {
             newUrl = [[NSString alloc] initWithFormat:@"%@%@%@",newUrl,para,queryString];
+            newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         }
         request.URL = [[NSURL alloc] initWithString:newUrl];
     }else{

@@ -166,6 +166,7 @@
     }else{
         task = [[HttpTaskIOS6 alloc] init];
     }
+    task.httpDNS = self.httpDNS;
     NSMutableDictionary * params = [[NSMutableDictionary alloc] init];
     AutoResetEvent * set = [[AutoResetEvent alloc] init];
     HttpCommunicateResult * httpResult = [[HttpCommunicateResult alloc] initWithSet:set];
@@ -369,6 +370,7 @@
     }else{
         task = [[HttpTaskIOS6 alloc] init];
     }
+    task.httpDNS = self.httpDNS;
     //        requestImpl(request,package:package,url:HttpUtils.url(self, pack: package), parameters: package.handle.getParams(request,package:package),isDebug:self.isDebug, success: {(response: HttpResponse) in
     //
     [self requestImpl:task package:package url:[HttpUtils url:self pack:package] parameters:[package.handle getParams:task package:package] isDebug:self.isDebug success:^(HttpResponse * response) {
@@ -594,6 +596,14 @@ HttpCommunicateImpl * global(){
 }
 +(void)setCommUrl:(NSString *)commUrl{
     global().commUrl = commUrl;
+}
+
++(id<HttpDNS>)getHttpDNS{
+    return global().httpDNS;
+}
+
++(void)setHttpDNS:(id<HttpDNS>)httpDNS{
+    global().httpDNS = httpDNS;
 }
 
 +(BOOL)isDebug{

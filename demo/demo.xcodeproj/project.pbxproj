@@ -16,6 +16,7 @@
 		3E0249A01C4CCAFA001FC3F8 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E02499F1C4CCAFA001FC3F8 /* JavaScriptCore.framework */; };
 		3E3C7D081C72D5DA00FB8195 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3C7D071C72D5DA00FB8195 /* libstdc++.tbd */; };
 		3E3C7D0A1C72D78100FB8195 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3C7D091C72D78100FB8195 /* libsqlite3.0.tbd */; };
+		3E4244F51CD30BE4006533C4 /* TestHttpPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4244F41CD30BE4006533C4 /* TestHttpPackage.m */; };
 		3ECB95E11C48F39600E5E67C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECB95E01C48F39600E5E67C /* main.m */; };
 		3ECB95E41C48F39600E5E67C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECB95E31C48F39600E5E67C /* AppDelegate.m */; };
 		3ECB95E71C48F39600E5E67C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECB95E61C48F39600E5E67C /* ViewController.m */; };
@@ -55,6 +56,8 @@
 		3E0F5F811C71CB910043CDFE /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		3E3C7D071C72D5DA00FB8195 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		3E3C7D091C72D78100FB8195 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		3E4244F31CD30BE4006533C4 /* TestHttpPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestHttpPackage.h; sourceTree = "<group>"; };
+		3E4244F41CD30BE4006533C4 /* TestHttpPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHttpPackage.m; sourceTree = "<group>"; };
 		3ECB95DC1C48F39600E5E67C /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ECB95E01C48F39600E5E67C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3ECB95E21C48F39600E5E67C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 				3ECB95ED1C48F39600E5E67C /* LaunchScreen.storyboard */,
 				3ECB95F01C48F39600E5E67C /* Info.plist */,
 				3ECB95DF1C48F39600E5E67C /* Supporting Files */,
+				3E4244F31CD30BE4006533C4 /* TestHttpPackage.h */,
+				3E4244F41CD30BE4006533C4 /* TestHttpPackage.m */,
 			);
 			path = demo;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 				3ECB95E71C48F39600E5E67C /* ViewController.m in Sources */,
 				3ECB95E41C48F39600E5E67C /* AppDelegate.m in Sources */,
 				3ECB95E11C48F39600E5E67C /* main.m in Sources */,
+				3E4244F51CD30BE4006533C4 /* TestHttpPackage.m in Sources */,
 				3E0249931C4CC7C1001FC3F8 /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

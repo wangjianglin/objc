@@ -12,5 +12,6 @@
 
 #import "HttpCommunicate.h"
 #import "HttpUploadPackage.h"
+#import "AliHttpDNS.h"
 
 #endif

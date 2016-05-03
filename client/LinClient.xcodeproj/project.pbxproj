@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E4244E11CD205C9006533C4 /* HttpDNS.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E4244DF1CD205C9006533C4 /* HttpDNS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E4244E51CD2062D006533C4 /* AliHttpDNS.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E4244E31CD2062D006533C4 /* AliHttpDNS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E4244E61CD2062D006533C4 /* AliHttpDNS.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4244E41CD2062D006533C4 /* AliHttpDNS.m */; };
+		3E4244E91CD206B3006533C4 /* HttpDNSOrigin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E4244E71CD206B3006533C4 /* HttpDNSOrigin.h */; };
+		3E4244EA1CD206B3006533C4 /* HttpDNSOrigin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4244E81CD206B3006533C4 /* HttpDNSOrigin.m */; };
+		3E4244F11CD208A8006533C4 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4244EF1CD208A8006533C4 /* NetworkManager.m */; };
+		3E4244F21CD208A8006533C4 /* NetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E4244F01CD208A8006533C4 /* NetworkManager.h */; };
 		3EA8ACA71B84400A0043922A /* client.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ACA61B84400A0043922A /* client.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EA8ACAD1B84400A0043922A /* LinClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA8ACA11B84400A0043922A /* LinClient.framework */; };
 		3EA8ACB41B84400A0043922A /* clientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ACB31B84400A0043922A /* clientTests.m */; };
@@ -68,6 +75,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E4244DF1CD205C9006533C4 /* HttpDNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpDNS.h; path = httpdns/HttpDNS.h; sourceTree = "<group>"; };
+		3E4244E31CD2062D006533C4 /* AliHttpDNS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AliHttpDNS.h; path = httpdns/AliHttpDNS.h; sourceTree = "<group>"; };
+		3E4244E41CD2062D006533C4 /* AliHttpDNS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AliHttpDNS.m; path = httpdns/AliHttpDNS.m; sourceTree = "<group>"; };
+		3E4244E71CD206B3006533C4 /* HttpDNSOrigin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpDNSOrigin.h; path = httpdns/HttpDNSOrigin.h; sourceTree = "<group>"; };
+		3E4244E81CD206B3006533C4 /* HttpDNSOrigin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HttpDNSOrigin.m; path = httpdns/HttpDNSOrigin.m; sourceTree = "<group>"; };
+		3E4244EF1CD208A8006533C4 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkManager.m; path = httpdns/NetworkManager.m; sourceTree = "<group>"; };
+		3E4244F01CD208A8006533C4 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkManager.h; path = httpdns/NetworkManager.h; sourceTree = "<group>"; };
 		3EA8ACA11B84400A0043922A /* LinClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LinClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EA8ACA51B84400A0043922A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3EA8ACA61B84400A0043922A /* client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = client.h; sourceTree = "<group>"; };
@@ -142,6 +156,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E4244DE1CD205AA006533C4 /* httpdns */ = {
+			isa = PBXGroup;
+			children = (
+				3E4244EF1CD208A8006533C4 /* NetworkManager.m */,
+				3E4244F01CD208A8006533C4 /* NetworkManager.h */,
+				3E4244DF1CD205C9006533C4 /* HttpDNS.h */,
+				3E4244E31CD2062D006533C4 /* AliHttpDNS.h */,
+				3E4244E41CD2062D006533C4 /* AliHttpDNS.m */,
+				3E4244E71CD206B3006533C4 /* HttpDNSOrigin.h */,
+				3E4244E81CD206B3006533C4 /* HttpDNSOrigin.m */,
+			);
+			name = httpdns;
+			sourceTree = "<group>";
+		};
 		3EA8AC971B84400A0043922A = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +193,7 @@
 		3EA8ACA31B84400A0043922A /* client */ = {
 			isa = PBXGroup;
 			children = (
+				3E4244DE1CD205AA006533C4 /* httpdns */,
 				3EA8ACC71B8442890043922A /* http */,
 				3EA8ACFB1B8442890043922A /* Constants.m */,
 				3EA8ACFC1B8442890043922A /* Constants.h */,
@@ -263,6 +292,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E4244E51CD2062D006533C4 /* AliHttpDNS.h in Headers */,
+				3E4244E11CD205C9006533C4 /* HttpDNS.h in Headers */,
 				3EA8AD321B8442890043922A /* https.h in Headers */,
 				3EA8AD201B8442890043922A /* HttpTask.h in Headers */,
 				3EA8AD131B8442890043922A /* FileUploadHttpRequestHandle.h in Headers */,
@@ -270,6 +301,8 @@
 				3EA8AD0F1B8442890043922A /* AFURLSessionManager.h in Headers */,
 				3EA8AD241B8442890043922A /* HttpUploadPackage.h in Headers */,
 				3EA8AD0B1B8442890043922A /* AFURLRequestSerialization.h in Headers */,
+				3E4244F21CD208A8006533C4 /* NetworkManager.h in Headers */,
+				3E4244E91CD206B3006533C4 /* HttpDNSOrigin.h in Headers */,
 				3EA8ACFE1B8442890043922A /* AFHTTPRequestOperation.h in Headers */,
 				3EA8AD021B8442890043922A /* AFHTTPSessionManager.h in Headers */,
 				3EA8AD181B8442890043922A /* HttpPackage.h in Headers */,
@@ -389,6 +422,7 @@
 				3EA8AD141B8442890043922A /* FileUploadHttpRequestHandle.m in Sources */,
 				3EA8AD101B8442890043922A /* AFURLSessionManager.m in Sources */,
 				3EA8AD1C1B8442890043922A /* HttpRequestHandle.m in Sources */,
+				3E4244E61CD2062D006533C4 /* AliHttpDNS.m in Sources */,
 				3EA8AD301B8442890043922A /* Constants.m in Sources */,
 				3EA8AD211B8442890043922A /* HttpTask.m in Sources */,
 				3EA8AD031B8442890043922A /* AFHTTPSessionManager.m in Sources */,
@@ -401,12 +435,14 @@
 				3EA8AD191B8442890043922A /* HttpPackage.m in Sources */,
 				3EA8AD161B8442890043922A /* HttpCommunicate.m in Sources */,
 				3EA8AD061B8442890043922A /* AFNetworkReachabilityManager.m in Sources */,
+				3E4244F11CD208A8006533C4 /* NetworkManager.m in Sources */,
 				3EA8AD0A1B8442890043922A /* AFURLConnectionOperation.m in Sources */,
 				3EA8AD0C1B8442890043922A /* AFURLRequestSerialization.m in Sources */,
 				3EA8AD2B1B8442890043922A /* NoneHttpRequestHandle.m in Sources */,
 				3EA8AD0E1B8442890043922A /* AFURLResponseSerialization.m in Sources */,
 				3EA8ACFF1B8442890043922A /* AFHTTPRequestOperation.m in Sources */,
 				3EA8AD121B8442890043922A /* EncryptJsonHttpRequestHandle.m in Sources */,
+				3E4244EA1CD206B3006533C4 /* HttpDNSOrigin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
