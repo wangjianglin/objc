@@ -19,7 +19,8 @@
     // Do any additional setup after loading the view.
     NSString * url = [[NSString alloc] initWithFormat:@"/html/index.html?debug=true&url=http://test.feicuibaba.com&isUpdate=false&channel=#/login"];
     
-    [self loadUrl:url];
+//    [self loadUrl:url];
+    [self loadUrl:@"/internal/httpdns.html"];
 }
 
 - (void)didReceiveMemoryWarning {

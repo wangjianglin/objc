@@ -95,8 +95,8 @@
 //}
 
 +(LinWebController*)webView:(int)flag{
-    for (UIWebView * item in LinWebURLProtocol.webs) {
-        if (item != nil && item.tag == flag) {
+    for (LinWebController * item in LinWebURLProtocol.webs) {
+        if (item != nil && item.view.tag == flag) {
             return item;
         }
     }
@@ -545,8 +545,8 @@
     self.view = _webView;
     _webView.mediaPlaybackRequiresUserAction = NO;
     
-//    static int globalWebFlag = 0;
-//    _webView.tag = ++globalWebFlag;
+    static int globalWebFlag = 0;
+    _webView.tag = ++globalWebFlag;
     
     _webView.delegate = self;
     
@@ -554,7 +554,7 @@
     
     [NSURLProtocol registerClass:[LinWebURLProtocol class]];
     
-    [LinWebURLProtocol registerURLProtocol:_webView];
+    [LinWebURLProtocol registerURLProtocol:self];
     
 //    _webView.
 //    cachePolicy = NSURLRequestReturnCacheDataElseLoad;
@@ -692,17 +692,34 @@
     
 //    [webView stringByEvaluatingJavaScriptFromString:@"document.cookie = 'name=value';"];
 //    NSString * js = [[NSString alloc] initWithFormat:@"window.addEventListener( \"DOMContentLoaded\", function(){sessionStorage.setItem(\"web-flag\",\"%d\");}, true )",(int)self.view.tag];
+    NSString * js = [[NSString alloc] initWithFormat:@"sessionStorage.setItem(\"__ios-web-flag\",\"%d\");",(int)self.view.tag];
     
-//     NSString * js = [[NSString alloc] initWithFormat:@"window.setFlag = function(){sessionStorage.setItem(\"web-flag\",\"%d\");};",(int)self.view.tag];
+//     NSString * js = [[NSString alloc] initWithFormat:@"window.setFlag = function(){sessionStorage.setItem(\"__ios-web-flag\",\"%d\");};",(int)self.view.tag];
     
-    NSString * js = [[NSString alloc] initWithFormat:@"Object.defineProperty(window,'IOSWebFlag',{value:%d,writable:false,configurable:false,enumerable:false})",(int)self.view.tag];
+//    NSString * js = [[NSString alloc] initWithFormat:@"Object.defineProperty(window,'IOSWebFlag',{value:%d,writable:false,configurable:false,enumerable:false})",(int)self.view.tag];
+//    NSString * js = @"window.IOSWebFlag = 2";
+//    NSLog(@"%@",js);
     [webView stringByEvaluatingJavaScriptFromString:js];
+    
+    js = [[NSString alloc] initWithFormat:@"Object.defineProperty(window,'IOSWebFlag',{value:%d,writable:false,configurable:false,enumerable:false})",(int)self.view.tag];
+    [webView stringByEvaluatingJavaScriptFromString:js];
+    
+//    NSLog(@"r:%@",r);
+//    r = [webView stringByEvaluatingJavaScriptFromString:@"window.IOSWebFlag"];
+//    NSLog(@"r:%@",r);
 //    [webView stringByEvaluatingJavaScriptFromString:@"window.setFlag();"];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
+//    NSLog(@"====");
+//    NSString * r = [webView stringByEvaluatingJavaScriptFromString:@"window.IOSWebFlag"];
+//    NSLog(@"r:%@",r);
+    
+//    NSString * js = @"window.IOSWebFlag = 2";
+//    NSLog(@"%@",js);
+//    [webView stringByEvaluatingJavaScriptFromString:js];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-    
+//    NSLog(@"error!");
 }
 
 @end
