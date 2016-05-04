@@ -92,6 +92,21 @@
         self.startupPlugins = [[NSMutableArray alloc] initWithCapacity:8];
         pluginName = nil;
         
+        
+        NSArray * defaultPlugins = @[@"LinAppPlugin",@"LinDevicePlugin",@"LinStoragePlugin",@"LinHttpDNSPlugin"];
+        
+        
+        NSArray * defaultPluginNames = @[@"app",@"device",@"storage",@"httpDns"];
+        
+        for (int n=0; n<[defaultPlugins count]; n++) {
+//            obj = [[NSClassFromString(defaultPlugins[n]) alloc] initWithWebView:self->_webView];
+//            if (obj != nil) {
+//                [pluginObjects setValue:obj forKey:defaultPluginNames[n]];
+//            }
+            self.plugins[[defaultPluginNames[n] lowercaseString]] = defaultPlugins[n];
+        }
+        
+        
         LinConfigParser* delegate = self;//[[LinConfigParser alloc] init];
         
         // read from config.xml in the app bundle

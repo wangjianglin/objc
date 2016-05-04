@@ -27,21 +27,21 @@
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
     
-    <plugin name="app">
-        <param name="ios-package" value="LinAppPlugin" />
-    </plugin>
-    <plugin name="device">
-        <param name="ios-package" value="LinDevicePlugin" />
-    </plugin>
+<!--    <plugin name="app">-->
+<!--        <param name="ios-package" value="LinAppPlugin" />-->
+<!--    </plugin>-->
+<!--    <plugin name="device">-->
+<!--        <param name="ios-package" value="LinDevicePlugin" />-->
+<!--    </plugin>-->
     <plugin name="weixin">
         <param name="ios-package" value="WeiXinPlugin" />
     </plugin>
     <plugin name="weixin2">
         <param name="ios-package" value="WeiXin2Plugin" />
     </plugin>
-    <plugin name="storage">
-        <param name="ios-package" value="LinStoragePlugin" />
-    </plugin>
+<!--    <plugin name="storage">-->
+<!--        <param name="ios-package" value="LinStoragePlugin" />-->
+<!--    </plugin>-->
     <plugin name="alipay">
         <param name="ios-package" value="AlipayPlugin" />
     </plugin>

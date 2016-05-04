@@ -25,8 +25,8 @@
 
 static char *const networkManagerQueue = "com.alibaba.managerQueue";
 static dispatch_queue_t reachabilityQueue;
-static Boolean preProxy = false;
-static double preProxyTime = 0;
+//static Boolean preProxy = false;
+//static double preProxyTime = 0;
 
 @implementation NetworkManager
 {
@@ -190,9 +190,9 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 
 + (BOOL) configureProxies
 {
-    if(preProxyTime + 60 > [[[NSDate alloc] init] timeIntervalSince1970]){
-        return preProxy;
-    }
+//    if(preProxyTime + 60 > [[[NSDate alloc] init] timeIntervalSince1970]){
+//        return preProxy;
+//    }
     NSDictionary *proxySettings = CFBridgingRelease(CFNetworkCopySystemProxySettings());
     
     NSArray *proxies = nil;
@@ -209,12 +209,14 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
         
         if (host || port)
         {
-            preProxy = YES;
+//            preProxy = YES;
+            return YES;
         }
     }
-    preProxy = NO;
-    preProxyTime = [[[NSDate alloc] init] timeIntervalSince1970];
-    return preProxy;
+//    preProxy = NO;
+//    preProxyTime = [[[NSDate alloc] init] timeIntervalSince1970];
+//    return preProxy;
+    return NO;
 }
 
 @end

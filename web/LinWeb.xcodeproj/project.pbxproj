@@ -10,17 +10,11 @@
 		3EA8AF651B8476EB0043922A /* web.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8AF641B8476EB0043922A /* web.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EA8AF6B1B8476EB0043922A /* LinWeb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA8AF5F1B8476EB0043922A /* LinWeb.framework */; };
 		3EA8AF721B8476EB0043922A /* webTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8AF711B8476EB0043922A /* webTests.m */; };
-		3EA8AF941B847CC20043922A /* LinStoragePlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8AF7B1B847CC20043922A /* LinStoragePlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AF951B847CC20043922A /* LinStoragePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8AF7C1B847CC20043922A /* LinStoragePlugin.m */; };
 		3EA8AF961B847CC20043922A /* LinWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8AF7D1B847CC20043922A /* LinWebController.m */; };
 		3EA8AF971B847CC20043922A /* ChromeStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8AF7E1B847CC20043922A /* ChromeStorage.m */; };
-		3EA8AF981B847CC20043922A /* LinAppPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8AF7F1B847CC20043922A /* LinAppPlugin.m */; };
-		3EA8AF991B847CC20043922A /* LinAppPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8AF801B847CC20043922A /* LinAppPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EA8AF9C1B847CC20043922A /* AsynResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8AF841B847CC20043922A /* AsynResult.m */; };
 		3EA8AF9D1B847CC20043922A /* AsynResult.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8AF851B847CC20043922A /* AsynResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EA8AF9E1B847CC20043922A /* LinWebPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8AF861B847CC20043922A /* LinWebPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AF9F1B847CC20043922A /* LinDevicePlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8AF871B847CC20043922A /* LinDevicePlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AFA01B847CC20043922A /* LinDevicePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8AF881B847CC20043922A /* LinDevicePlugin.m */; };
 		3EA8AFA11B847CC20043922A /* LinConfigParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8AF891B847CC20043922A /* LinConfigParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EA8AFA21B847CC20043922A /* LinConfigParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8AF8A1B847CC20043922A /* LinConfigParser.m */; };
 		3EA8AFA31B847CC20043922A /* LinWebPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8AF8B1B847CC20043922A /* LinWebPlugin.m */; };
@@ -34,6 +28,14 @@
 		3EA8AFAB1B847CC20043922A /* KeychainUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8AF931B847CC20043922A /* KeychainUtil.m */; };
 		3EA8AFAD1B847CE50043922A /* LinUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA8AFAC1B847CE50043922A /* LinUtil.framework */; };
 		3EA8AFAF1B847CF40043922A /* LinCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA8AFAE1B847CF40043922A /* LinCore.framework */; };
+		3EC18A231CD9D22000F9EC33 /* LinHttpDNSPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EC18A211CD9D22000F9EC33 /* LinHttpDNSPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3EC18A241CD9D22000F9EC33 /* LinHttpDNSPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC18A221CD9D22000F9EC33 /* LinHttpDNSPlugin.m */; };
+		3EC18A301CD9D28000F9EC33 /* LinStoragePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC18A2A1CD9D28000F9EC33 /* LinStoragePlugin.m */; };
+		3EC18A311CD9D28000F9EC33 /* LinStoragePlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EC18A2B1CD9D28000F9EC33 /* LinStoragePlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3EC18A321CD9D28000F9EC33 /* LinAppPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC18A2C1CD9D28000F9EC33 /* LinAppPlugin.m */; };
+		3EC18A331CD9D28000F9EC33 /* LinAppPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EC18A2D1CD9D28000F9EC33 /* LinAppPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3EC18A341CD9D28000F9EC33 /* LinDevicePlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EC18A2E1CD9D28000F9EC33 /* LinDevicePlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3EC18A351CD9D28000F9EC33 /* LinDevicePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC18A2F1CD9D28000F9EC33 /* LinDevicePlugin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,17 +55,11 @@
 		3EA8AF6A1B8476EB0043922A /* LinWebTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinWebTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EA8AF701B8476EB0043922A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3EA8AF711B8476EB0043922A /* webTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = webTests.m; sourceTree = "<group>"; };
-		3EA8AF7B1B847CC20043922A /* LinStoragePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinStoragePlugin.h; sourceTree = "<group>"; };
-		3EA8AF7C1B847CC20043922A /* LinStoragePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinStoragePlugin.m; sourceTree = "<group>"; };
 		3EA8AF7D1B847CC20043922A /* LinWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinWebController.m; sourceTree = "<group>"; };
 		3EA8AF7E1B847CC20043922A /* ChromeStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChromeStorage.m; sourceTree = "<group>"; };
-		3EA8AF7F1B847CC20043922A /* LinAppPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinAppPlugin.m; sourceTree = "<group>"; };
-		3EA8AF801B847CC20043922A /* LinAppPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinAppPlugin.h; sourceTree = "<group>"; };
 		3EA8AF841B847CC20043922A /* AsynResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsynResult.m; sourceTree = "<group>"; };
 		3EA8AF851B847CC20043922A /* AsynResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsynResult.h; sourceTree = "<group>"; };
 		3EA8AF861B847CC20043922A /* LinWebPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinWebPlugin.h; sourceTree = "<group>"; };
-		3EA8AF871B847CC20043922A /* LinDevicePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinDevicePlugin.h; sourceTree = "<group>"; };
-		3EA8AF881B847CC20043922A /* LinDevicePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinDevicePlugin.m; sourceTree = "<group>"; };
 		3EA8AF891B847CC20043922A /* LinConfigParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinConfigParser.h; sourceTree = "<group>"; };
 		3EA8AF8A1B847CC20043922A /* LinConfigParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinConfigParser.m; sourceTree = "<group>"; };
 		3EA8AF8B1B847CC20043922A /* LinWebPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinWebPlugin.m; sourceTree = "<group>"; };
@@ -77,6 +73,14 @@
 		3EA8AF931B847CC20043922A /* KeychainUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainUtil.m; sourceTree = "<group>"; };
 		3EA8AFAC1B847CE50043922A /* LinUtil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LinUtil.framework; path = "../util/build/Debug-iphoneos/LinUtil.framework"; sourceTree = "<group>"; };
 		3EA8AFAE1B847CF40043922A /* LinCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LinCore.framework; path = "../core/build/Debug-iphoneos/LinCore.framework"; sourceTree = "<group>"; };
+		3EC18A211CD9D22000F9EC33 /* LinHttpDNSPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinHttpDNSPlugin.h; path = plugins/LinHttpDNSPlugin.h; sourceTree = "<group>"; };
+		3EC18A221CD9D22000F9EC33 /* LinHttpDNSPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LinHttpDNSPlugin.m; path = plugins/LinHttpDNSPlugin.m; sourceTree = "<group>"; };
+		3EC18A2A1CD9D28000F9EC33 /* LinStoragePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LinStoragePlugin.m; path = plugins/LinStoragePlugin.m; sourceTree = "<group>"; };
+		3EC18A2B1CD9D28000F9EC33 /* LinStoragePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinStoragePlugin.h; path = plugins/LinStoragePlugin.h; sourceTree = "<group>"; };
+		3EC18A2C1CD9D28000F9EC33 /* LinAppPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LinAppPlugin.m; path = plugins/LinAppPlugin.m; sourceTree = "<group>"; };
+		3EC18A2D1CD9D28000F9EC33 /* LinAppPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinAppPlugin.h; path = plugins/LinAppPlugin.h; sourceTree = "<group>"; };
+		3EC18A2E1CD9D28000F9EC33 /* LinDevicePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinDevicePlugin.h; path = plugins/LinDevicePlugin.h; sourceTree = "<group>"; };
+		3EC18A2F1CD9D28000F9EC33 /* LinDevicePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LinDevicePlugin.m; path = plugins/LinDevicePlugin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,17 +127,12 @@
 		3EA8AF611B8476EB0043922A /* web */ = {
 			isa = PBXGroup;
 			children = (
-				3EA8AF7B1B847CC20043922A /* LinStoragePlugin.h */,
-				3EA8AF7C1B847CC20043922A /* LinStoragePlugin.m */,
+				3EC18A251CD9D22700F9EC33 /* plugins */,
 				3EA8AF7D1B847CC20043922A /* LinWebController.m */,
 				3EA8AF7E1B847CC20043922A /* ChromeStorage.m */,
-				3EA8AF7F1B847CC20043922A /* LinAppPlugin.m */,
-				3EA8AF801B847CC20043922A /* LinAppPlugin.h */,
 				3EA8AF841B847CC20043922A /* AsynResult.m */,
 				3EA8AF851B847CC20043922A /* AsynResult.h */,
 				3EA8AF861B847CC20043922A /* LinWebPlugin.h */,
-				3EA8AF871B847CC20043922A /* LinDevicePlugin.h */,
-				3EA8AF881B847CC20043922A /* LinDevicePlugin.m */,
 				3EA8AF8B1B847CC20043922A /* LinWebPlugin.m */,
 				3EA8AF891B847CC20043922A /* LinConfigParser.h */,
 				3EA8AF8A1B847CC20043922A /* LinConfigParser.m */,
@@ -176,6 +175,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3EC18A251CD9D22700F9EC33 /* plugins */ = {
+			isa = PBXGroup;
+			children = (
+				3EC18A2A1CD9D28000F9EC33 /* LinStoragePlugin.m */,
+				3EC18A2B1CD9D28000F9EC33 /* LinStoragePlugin.h */,
+				3EC18A2C1CD9D28000F9EC33 /* LinAppPlugin.m */,
+				3EC18A2D1CD9D28000F9EC33 /* LinAppPlugin.h */,
+				3EC18A2E1CD9D28000F9EC33 /* LinDevicePlugin.h */,
+				3EC18A2F1CD9D28000F9EC33 /* LinDevicePlugin.m */,
+				3EC18A211CD9D22000F9EC33 /* LinHttpDNSPlugin.h */,
+				3EC18A221CD9D22000F9EC33 /* LinHttpDNSPlugin.m */,
+			);
+			name = plugins;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -183,15 +197,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EC18A311CD9D28000F9EC33 /* LinStoragePlugin.h in Headers */,
+				3EC18A231CD9D22000F9EC33 /* LinHttpDNSPlugin.h in Headers */,
+				3EC18A341CD9D28000F9EC33 /* LinDevicePlugin.h in Headers */,
+				3EC18A331CD9D28000F9EC33 /* LinAppPlugin.h in Headers */,
 				3EA8AFA81B847CC20043922A /* UIWebView+JavaScriptAlert.h in Headers */,
 				3EA8AFAA1B847CC20043922A /* KeychainUtil.h in Headers */,
 				3EA8AF9D1B847CC20043922A /* AsynResult.h in Headers */,
-				3EA8AF941B847CC20043922A /* LinStoragePlugin.h in Headers */,
-				3EA8AF991B847CC20043922A /* LinAppPlugin.h in Headers */,
 				3EA8AFA51B847CC20043922A /* FileDownload.h in Headers */,
 				3EA8AF9E1B847CC20043922A /* LinWebPlugin.h in Headers */,
 				3EA8AFA11B847CC20043922A /* LinConfigParser.h in Headers */,
-				3EA8AF9F1B847CC20043922A /* LinDevicePlugin.h in Headers */,
 				3EA8AFA91B847CC20043922A /* LinWebController.h in Headers */,
 				3EA8AFA41B847CC20043922A /* ChromeStorage.h in Headers */,
 				3EA8AF651B8476EB0043922A /* web.h in Headers */,
@@ -294,16 +309,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EA8AF981B847CC20043922A /* LinAppPlugin.m in Sources */,
 				3EA8AF961B847CC20043922A /* LinWebController.m in Sources */,
+				3EC18A241CD9D22000F9EC33 /* LinHttpDNSPlugin.m in Sources */,
 				3EA8AFA31B847CC20043922A /* LinWebPlugin.m in Sources */,
 				3EA8AFA21B847CC20043922A /* LinConfigParser.m in Sources */,
-				3EA8AFA01B847CC20043922A /* LinDevicePlugin.m in Sources */,
-				3EA8AF951B847CC20043922A /* LinStoragePlugin.m in Sources */,
 				3EA8AFAB1B847CC20043922A /* KeychainUtil.m in Sources */,
 				3EA8AFA71B847CC20043922A /* UIWebView+JavaScriptAlert.m in Sources */,
+				3EC18A301CD9D28000F9EC33 /* LinStoragePlugin.m in Sources */,
 				3EA8AF971B847CC20043922A /* ChromeStorage.m in Sources */,
+				3EC18A321CD9D28000F9EC33 /* LinAppPlugin.m in Sources */,
 				3EA8AF9C1B847CC20043922A /* AsynResult.m in Sources */,
+				3EC18A351CD9D28000F9EC33 /* LinDevicePlugin.m in Sources */,
 				3EA8AFA61B847CC20043922A /* FileDownload.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

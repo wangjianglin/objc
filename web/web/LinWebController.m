@@ -421,6 +421,7 @@
 //    }
     LinWebPlugin * obj = [pluginObjects objectForKey:name];
     if(obj == nil){
+        
         LinConfigParser * parser = [LinWebController plugins];
         NSString * className = [parser.plugins objectForKey:name];
         if (className != nil) {
@@ -459,7 +460,7 @@
             
         }else{
             //            [self sendResponseText:@""];
-            return @"";
+            return @"{}";
         }
     }
 
