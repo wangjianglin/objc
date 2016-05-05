@@ -143,7 +143,8 @@ static int defaultHostTTL = 30;
 }
 
 -(NSString*)getIpByHost:(NSString *)host {
-    if ([self.delegate shouldDegradeHTTPDNS:host] || [NetworkManager configureProxies]) {
+//    if ([self.delegate shouldDegradeHTTPDNS:host] || [NetworkManager configureProxies]) {
+    if ([self.delegate shouldDegradeHTTPDNS:host]) {
         return nil;
     }
     
