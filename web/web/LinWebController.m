@@ -40,7 +40,6 @@
 ///##################################################################################
 
 @interface LinWebURLProtocol : NSURLProtocol
-//+ (void)registerURLProtocol;
 
 - (void)sendResponseText:(NSString*)result;
 
@@ -74,25 +73,16 @@
 
 
 +(NSMutableArray *)webs{
-
+    
     static NSMutableArray * _webs;
     static dispatch_once_t _webs_once_t = 0;
     static LinConfigParser * configParser;
     dispatch_once(&_webs_once_t, ^{
         _webs = [[NSMutableArray alloc] init];
-        //[NSURLProtocol registerClass:[LinWebURLProtocol class]];
         configParser = [[LinConfigParser alloc] init];
     });
     return _webs;
 }
-//+(LinConfigParser *)plugins{
-//    static dispatch_once_t _plugins_once_t = 0;
-//    static LinConfigParser * configParser;
-//    dispatch_once(&_plugins_once_t, ^{
-//        configParser = [[LinConfigParser alloc] init];
-//    });
-//    return configParser;
-//}
 
 +(LinWebController*)webView:(int)flag{
     for (LinWebController * item in LinWebURLProtocol.webs) {
@@ -102,31 +92,7 @@
     }
     return nil;
 }
-//+ (LinWebPlugin*)plugin:(NSString*)name flag:(int)flag{
-//    if(name == nil){
-//        return nil;
-//    }
-//    name = [name lowercaseString];
-//    static dispatch_once_t _plugin_objects_once_t = 0;
-//    static NSMutableDictionary * pluginObjects;
-//    dispatch_once(&_plugin_objects_once_t, ^{
-//        pluginObjects = [[NSMutableDictionary alloc] init];
-//    });
-//    NSString * flagObj = [[NSString alloc] initWithFormat:@"%d",flag];
-//    NSMutableDictionary * item = [pluginObjects objectForKey:flagObj];
-//    if(item == nil){
-//        item = [[NSMutableDictionary alloc] init];
-//        [pluginObjects setValue:item forKey:flagObj];
-//    }
-//    LinWebPlugin * obj = [pluginObjects objectForKey:name];
-//    if(obj == nil){
-//        LinConfigParser * parser = [LinWebURLProtocol plugins];
-//        NSString * className = [parser.plugins objectForKey:name];
-//        obj = [[NSClassFromString(className) alloc] initWithWebView:[LinWebURLProtocol webView:flag]];
-//        [pluginObjects setValue:obj forKey:name];
-//    }
-//    return obj;
-//}
+
 
 + (void)registerURLProtocol:(LinWebController*)webView
 {
@@ -142,137 +108,42 @@
 + (BOOL)canInitWithRequest:(NSURLRequest*)theRequest
 {
     NSURL* theUrl = [theRequest URL];
-
+    
     NSString * absoluteString = [theUrl absoluteString];
-
+    
     if([absoluteString rangeOfString:@":0000/"].length != 0){
         return YES;
     }
     return NO;
 }
-//+(NSString*)actions:(NSString*)action{
-//    if ([action isEqualToString:@"platform"]) {
-//        //        [self sendResponseText:@"\"ios\""];
-//        return @"ios";
-//    }else if ([action isEqualToString:@"productName"]){
-//        UIDevice * device = [UIDevice currentDevice];
-//        //        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",device.name]];
-//        return device.name;
-//    }else if ([action isEqualToString:@"versionName"]){
-//        UIDevice * device = [UIDevice currentDevice];
-//        //        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",device.systemVersion]];
-//        return device.systemVersion;
-//    }else if ([action isEqualToString:@"version"]){
-//        UIDevice * device = [UIDevice currentDevice];
-//        //        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%f\"",[device.systemVersion floatValue]]];
-//        return [[NSString alloc] initWithFormat:@"%f",[device.systemVersion floatValue]];
-//    }else if ([action isEqualToString:@"model"]){
-//        UIDevice * device = [UIDevice currentDevice];
-//        //        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",device.model]];
-//        return [[NSString alloc] initWithFormat:@"%@",device.model];
-//    }else if ([action isEqualToString:@"uuid"]){
-//        //        UIDevice * device = [UIDevice currentDevice];
-//        //        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",@"------------"]];
-//        return @"------------";
-//    }
-//    return nil;
-//}
+
 -(void)startLoading{
-    //    __weak LinWebURLProtocol *wself = self;
-    //    [Queue asynQueue:^{
-    //        [wself startLoadingImpl];
-    //    }];
-    //}
-    //
-    //-(void)startLoadingImpl{
-
-    //#if DEBUG
-    //    NSString * absoluteString = [[self.request URL] absoluteString];
-    //    if ([absoluteString rangeOfString:@"http://init.icloud-analysis.com"].length != 0) {
-    //        return;
-    //    }
-    //#endif
-
+    
     int flag = [[self.request valueForHTTPHeaderField:@"web-flag"] intValue];
     NSString * name = [self.request valueForHTTPHeaderField:@"plugin"];
     NSString * action = [self.request valueForHTTPHeaderField:@"action"];
-
+    
     NSString * params = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
     
     
     LinWebController * web = [LinWebURLProtocol webView:flag];
-
+    
     [self sendResponseText:[web pluginAction:name action:action params:params]];
 }
 
-//+(NSString*)pluginAction:(NSString*)name action:(NSString*)action params:(NSString*)params flag:(int)flag{
-//
-//    if (name == nil || [name isEqualToString:@""]) {
-//        return [LinWebURLProtocol actions:action];
-//    }
-//    LinWebPlugin * plugin = [LinWebURLProtocol plugin:name flag:flag];
-//    id r = nil;
-//    SEL actionSel = NSSelectorFromString([[NSString alloc] initWithFormat:@"%@:",action]);
-//    if([plugin respondsToSelector:actionSel]){
-//
-//#pragma clang diagnostic push
-//#pragma clang diagnostic ignored "w"
-//        r = [plugin performSelector:actionSel withObject:[Json parse:params]];
-//#pragma clang diagnostic pop
-//
-//    }else{
-//        actionSel = NSSelectorFromString([[NSString alloc] initWithFormat:@"%@",action]);
-//        if([plugin respondsToSelector:actionSel]){
-//            //            NSString * params = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
-//#pragma clang diagnostic push
-//#pragma clang diagnostic ignored "w"
-//            r = [plugin performSelector:actionSel withObject:nil];
-//#pragma clang diagnostic pop
-//        }else{
-//            //            [self sendResponseText:@""];
-//            return @"";
-//        }
-//    }
-//
-//    //    if ([r isKindOfClass:[NSString class]]) {
-//    //        [self sendResponseText:[[[Json alloc] initWithObject:r] description]];
-//    //    }
-//    //    else
-//    NSString * rString = nil;
-//    if ([r isKindOfClass:[Json class]]) {
-//        //        [self sendResponseText:[r description]];
-//        rString = [r description];
-//    }else if ([r isKindOfClass:[AsynResult class]]){
-//        AsynResult * asynResult = (AsynResult*)r;
-//        //[asynResult setWeb:self];
-//        rString = [asynResult waitResult];
-//    }else if(r != nil){
-//        //        [self sendResponseText:[[[Json alloc] initWithObject:r] description]];
-//        rString = [[[Json alloc] initWithObject:r] description];
-//    }else{
-//        //        [self sendResponseText:@"{}"];
-//        rString = @"{}";
-//    }
-//
-//    if (rString == nil) {
-//        rString = @"{}";
-//    }
-//
-//    return rString;
-//}
 
 - (void)sendResponseText:(NSString*)result
 {
     NSData * data = [result dataUsingEncoding:NSUTF8StringEncoding];
     LinWebURLResponse * response = [[LinWebURLResponse alloc] initWithURL:[[self request] URL] MIMEType:@"application/json" expectedContentLength:[data length] textEncodingName:@"UTF-8"];
     response.statusCode = 200;
-
+    
     [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
     [[self client] URLProtocol:self didLoadData:data];
     [[self client] URLProtocolDidFinishLoading:self];
 }
 -(void)stopLoading{
-
+    
 }
 @end
 
@@ -284,7 +155,7 @@
 
 @interface AsynResult(){
     Json * _result;
-//    NSLock * lock;
+    //    NSLock * lock;
     AutoResetEvent * set;
 }
 
@@ -298,19 +169,11 @@
 -(instancetype)init{
     self = [super init];
     if(self){
-//        lock = [[NSLock alloc] init];
+        //        lock = [[NSLock alloc] init];
         set = [[AutoResetEvent alloc] init];
     }
     return self;
 }
-//-(void)setWeb:(LinWebURLProtocol*)web{
-//    [lock lock];
-//    if (_result != nil) {
-//        //[web sendResponseText:[_result description]];
-//    }
-//    _web = web;
-//    [lock unlock];
-//}
 
 -(NSString*)waitResult{
     [set waitOne];
@@ -321,13 +184,8 @@
 }
 
 -(void)setResult:(Json *)result{
-//    [lock lock];
-//    if(_web != nil){
-//        [_web sendResponseText:[result description]];
-//    }
     _result = result;
     [set set];
-//    [lock unlock];
 }
 
 @end
@@ -339,28 +197,28 @@
 -(void)testAlert{
     UIApplication * app =[UIApplication sharedApplication];
     UIWindow * window = app.windows[0];
-
-//    UIScrollView * scrollView = [[UIScrollView alloc] init];
-//    scrollView.backgroundColor = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:0.8];
-////    scrollView.frame = [UIScreen mainScreen].bounds;
-//    scrollView.frame = CGRectMake(0, 0, 300, 300);
-//    scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//    scrollView.maximumZoomScale = 8;
-//    scrollView.scrollEnabled = TRUE;
-////    scrollView.delegate = self;
-//    scrollView.backgroundColor = [UIColor blackColor];
-//
-//    UIImageView * imageView = [[UIImageView alloc] init];
-//    imageView.frame = [UIScreen mainScreen].bounds;
-////    imageView.image = [self waterMark:[UIImage imageWithURLString:images[0]] text:sn];
-//    [scrollView addSubview:imageView];
-////    _imageView = imageView;
-//
-//    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithAction:^(NSObject * obj) {
-//        [scrollView removeFromSuperview];
-//    }];
-//    [tap setNumberOfTapsRequired:2];
-//    [scrollView addGestureRecognizer:tap];
+    
+    //    UIScrollView * scrollView = [[UIScrollView alloc] init];
+    //    scrollView.backgroundColor = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:0.8];
+    ////    scrollView.frame = [UIScreen mainScreen].bounds;
+    //    scrollView.frame = CGRectMake(0, 0, 300, 300);
+    //    scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    //    scrollView.maximumZoomScale = 8;
+    //    scrollView.scrollEnabled = TRUE;
+    ////    scrollView.delegate = self;
+    //    scrollView.backgroundColor = [UIColor blackColor];
+    //
+    //    UIImageView * imageView = [[UIImageView alloc] init];
+    //    imageView.frame = [UIScreen mainScreen].bounds;
+    ////    imageView.image = [self waterMark:[UIImage imageWithURLString:images[0]] text:sn];
+    //    [scrollView addSubview:imageView];
+    ////    _imageView = imageView;
+    //
+    //    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithAction:^(NSObject * obj) {
+    //        [scrollView removeFromSuperview];
+    //    }];
+    //    [tap setNumberOfTapsRequired:2];
+    //    [scrollView addGestureRecognizer:tap];
     
     UIView * view = [[UIView alloc] init];
     view.frame = CGRectMake(0, 0, 300, 300);
@@ -370,23 +228,18 @@
 
 -(NSString*)actions:(NSString*)action{
     if ([action isEqualToString:@"platform"]) {
-        //        [self sendResponseText:@"\"ios\""];
         return @"ios";
     }else if ([action isEqualToString:@"productName"]){
         UIDevice * device = [UIDevice currentDevice];
-        //        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",device.name]];
         return device.name;
     }else if ([action isEqualToString:@"versionName"]){
         UIDevice * device = [UIDevice currentDevice];
-        //        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",device.systemVersion]];
         return device.systemVersion;
     }else if ([action isEqualToString:@"version"]){
         UIDevice * device = [UIDevice currentDevice];
-        //        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%f\"",[device.systemVersion floatValue]]];
         return [[NSString alloc] initWithFormat:@"%f",[device.systemVersion floatValue]];
     }else if ([action isEqualToString:@"model"]){
         UIDevice * device = [UIDevice currentDevice];
-        //        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",device.model]];
         return [[NSString alloc] initWithFormat:@"%@",device.model];
     }else if ([action isEqualToString:@"uuid"]){
         //        UIDevice * device = [UIDevice currentDevice];
@@ -408,17 +261,12 @@
         return nil;
     }
     name = [name lowercaseString];
-//    static dispatch_once_t _plugin_objects_once_t = 0;
-//    static NSMutableDictionary * pluginObjects;
+    
     dispatch_once(&_plugin_objects_once_t, ^{
         pluginObjects = [[NSMutableDictionary alloc] init];
     });
     
-//    NSMutableDictionary * item = [pluginObjects objectForKey:flagObj];
-//    if(item == nil){
-//        item = [[NSMutableDictionary alloc] init];
-//        [pluginObjects setValue:item forKey:flagObj];
-//    }
+    
     LinWebPlugin * obj = [pluginObjects objectForKey:name];
     if(obj == nil){
         
@@ -434,60 +282,48 @@
     return obj;
 }
 -(NSString*)pluginAction:(NSString*)name action:(NSString*)action params:(NSString*)params{
-
+    
     if (name == nil || [name isEqualToString:@""]) {
         return [self actions:action];
     }
     LinWebPlugin * plugin = [self plugin:name];
     id r = nil;
     SEL actionSel = NSSelectorFromString([[NSString alloc] initWithFormat:@"%@:",action]);
-    if([plugin respondsToSelector:actionSel]){
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        r = [plugin performSelector:actionSel withObject:[Json parse:params]];
-#pragma clang diagnostic pop
-
-    }else{
+    
+    NSMethodSignature *signature = [plugin methodSignatureForSelector:actionSel];
+    
+    if (!signature) {
         actionSel = NSSelectorFromString([[NSString alloc] initWithFormat:@"%@",action]);
-        if([plugin respondsToSelector:actionSel]){
-            
-            
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            r = [plugin performSelector:actionSel withObject:nil];
-#pragma clang diagnostic pop
-            
+        signature = [plugin methodSignatureForSelector:actionSel];
+    }
+    if (signature) {
+        Json * arg = nil;
+        if(signature.numberOfArguments > 0) {
+            arg = [Json parse:params];
+        }
+        if(signature.methodReturnLength > 0){
+            r = [plugin performSelector:actionSel withObject:arg];
         }else{
-            //            [self sendResponseText:@""];
-            return @"{}";
+            [plugin performSelector:actionSel withObject:arg];
         }
     }
-
-    //    if ([r isKindOfClass:[NSString class]]) {
-    //        [self sendResponseText:[[[Json alloc] initWithObject:r] description]];
-    //    }
-    //    else
+    
     NSString * rString = nil;
     if ([r isKindOfClass:[Json class]]) {
-        //        [self sendResponseText:[r description]];
         rString = [r description];
     }else if ([r isKindOfClass:[AsynResult class]]){
         AsynResult * asynResult = (AsynResult*)r;
-        //[asynResult setWeb:self];
         rString = [asynResult waitResult];
     }else if(r != nil){
-        //        [self sendResponseText:[[[Json alloc] initWithObject:r] description]];
         rString = [[[Json alloc] initWithObject:r] description];
     }else{
-        //        [self sendResponseText:@"{}"];
         rString = @"{}";
     }
-
+    
     if (rString == nil) {
         rString = @"{}";
     }
-
+    
     return rString;
 }
 
@@ -495,50 +331,50 @@
     _webView = [[UIWebView alloc] init];
     _webView.dataDetectorTypes = 0;
     //    let context = self.webView.valueForKeyPath("documentView.webView.mainFrame.javaScriptContext") as! JSContext
-    JSContext * context = [_webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    //    JSContext * context = [_webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    //
+    //    context[@"IOSBridge"] = ^(JSValue * name,JSValue * action,JSValue * params){
+    //        //      return "ok.";
+    //        //        NSString * value = @"000";//[[JSValue alloc] init];
+    //        ////        [value s]
+    //        //        return value;
+    //
+    //        return [self pluginAction:[name toString] action:[action toString] params:[params toString]];
+    //    };
     
-    context[@"IOSBridge"] = ^(JSValue * name,JSValue * action,JSValue * params){
-//      return "ok.";
-//        NSString * value = @"000";//[[JSValue alloc] init];
-////        [value s]
-//        return value;
-        
-        return [self pluginAction:[name toString] action:[action toString] params:[params toString]];
-    };
-
-//    context[@"IOSBridge"] = ^() {
-//        NSArray *args = [JSContext currentArguments];
-//        for (id obj in args) {
-//            NSLog(@"%@",obj);
-//        }
-//    };
+    //    context[@"IOSBridge"] = ^() {
+    //        NSArray *args = [JSContext currentArguments];
+    //        for (id obj in args) {
+    //            NSLog(@"%@",obj);
+    //        }
+    //    };
     
-//     [context objectForKeyedSubscript:@"IOSBridge"] setObject:<#(id)#> forKeyedSubscript:<#(NSObject<NSCopying> *)#>
+    //     [context objectForKeyedSubscript:@"IOSBridge"] setObject:<#(id)#> forKeyedSubscript:<#(NSObject<NSCopying> *)#>
     
-////    let logFunction : @convention(block) (String) -> Void =
-////    {
-////        (msg: String) in
-////        
-////        NSLog("Console: %@", msg)
-////    }
-////    context.objectForKeyedSubscript("console").setObject(unsafeBitCast(logFunction, AnyObject.self),
-////                                                         forKeyedSubscript: "log")
-//    context[@"console"][@"log"] = ^(JSValue * msg) {
-//        NSLog(@"JavaScript %@ log message: %@", [JSContext currentContext], msg);
-//    };
-//    
-//    context[@"console"][@"error"] = ^(JSValue * msg) {
-//        NSLog(@"JavaScript %@ error message: %@", [JSContext currentContext], msg);
-//    };
-//
-//    context[@"console"][@"trace"] = ^(JSValue * msg) {
-//        NSLog(@"JavaScript %@ trace message: %@", [JSContext currentContext], msg);
-//    };
-//
-//    
-//    context.exceptionHandler = ^(JSContext *context, JSValue *exception){
-//        NSLog(@"exception message:%@",exception);
-//    };
+    ////    let logFunction : @convention(block) (String) -> Void =
+    ////    {
+    ////        (msg: String) in
+    ////
+    ////        NSLog("Console: %@", msg)
+    ////    }
+    ////    context.objectForKeyedSubscript("console").setObject(unsafeBitCast(logFunction, AnyObject.self),
+    ////                                                         forKeyedSubscript: "log")
+    //    context[@"console"][@"log"] = ^(JSValue * msg) {
+    //        NSLog(@"JavaScript %@ log message: %@", [JSContext currentContext], msg);
+    //    };
+    //
+    //    context[@"console"][@"error"] = ^(JSValue * msg) {
+    //        NSLog(@"JavaScript %@ error message: %@", [JSContext currentContext], msg);
+    //    };
+    //
+    //    context[@"console"][@"trace"] = ^(JSValue * msg) {
+    //        NSLog(@"JavaScript %@ trace message: %@", [JSContext currentContext], msg);
+    //    };
+    //
+    //
+    //    context.exceptionHandler = ^(JSContext *context, JSValue *exception){
+    //        NSLog(@"exception message:%@",exception);
+    //    };
     
     
     
@@ -555,17 +391,21 @@
     
     [NSURLProtocol registerClass:[LinWebURLProtocol class]];
     
-    [LinWebURLProtocol registerURLProtocol:self];
+    static dispatch_once_t _register_url_protocol = 0;
+    dispatch_once(&_register_url_protocol, ^{
+        [LinWebURLProtocol registerURLProtocol:self];
+    });
     
-//    _webView.
-//    cachePolicy = NSURLRequestReturnCacheDataElseLoad;
+    
+    //    _webView.
+    //    cachePolicy = NSURLRequestReturnCacheDataElseLoad;
     
 #if DEBUG
     cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-//    [WebCache setDisabled:YES];
-//    [WebCache empty];
+    //    [WebCache setDisabled:YES];
+    //    [WebCache empty];
     
-//    清除cookies
+    //    清除cookies
     NSHTTPCookie *cookie;
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (cookie in [storage cookies])
@@ -574,7 +414,6 @@
     }
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
 #endif
-//    [self testAlert];
 }
 
 -(void)viewDidLoad{
@@ -619,10 +458,6 @@
     if ([url hasPrefix:@"http://"]) {
         appReq = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:cachePolicy timeoutInterval:20.0];
     }else{
-//        url = pathFor(DocumentsBundle, url);
-//        url = [[NSString alloc] initWithFormat:@"%@%@",url,@"#/tab/nav/home"];
-//        NSURL * nsURL = [NSURL fileURLWithPath:url];
-//        appReq = [NSURLRequest requestWithURL:nsURL cachePolicy:cachePolicy timeoutInterval:15.0];
         
         NSURL * startURL = [NSURL URLWithString:url];
         NSString * startFilePath = pathFor(DocumentsBundle, [startURL path]);
@@ -638,89 +473,30 @@
     
     [_webView loadRequest:appReq];
     
-//    if ([self.startPage rangeOfString:@"://"].location != NSNotFound) {
-//        appURL = [NSURL URLWithString:self.startPage];
-//    } else if ([self.wwwFolderName rangeOfString:@"://"].location != NSNotFound) {
-//        appURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@", self.wwwFolderName, self.startPage]];
-//    } else {
-//        // CB-3005 strip parameters from start page to check if page exists in resources
-//        NSURL* startURL = [NSURL URLWithString:self.startPage];
-//        NSLog(@"start page:%@",self.startPage);
-//        NSLog(@"start url:%@",startURL);
-//        NSString* startFilePath = [self.commandDelegate pathForResource:[startURL path]];
-//        
-//        NSLog(@"start file path:%@",startFilePath);
-//        
-//        if (startFilePath == nil) {
-//            loadErr = [NSString stringWithFormat:@"ERROR: Start Page at '%@/%@' was not found.", self.wwwFolderName, self.startPage];
-//            NSLog(@"%@", loadErr);
-//            self.loadFromString = YES;
-//            appURL = nil;
-//        } else {
-//            appURL = [NSURL fileURLWithPath:startFilePath];
-//            NSLog(@"app url:%@",appURL);
-//            // CB-3005 Add on the query params or fragment.
-//            NSString* startPageNoParentDirs = self.startPage;
-//            NSRange r = [startPageNoParentDirs rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"?#"] options:0];
-//            if (r.location != NSNotFound) {
-//                NSString* queryAndOrFragment = [self.startPage substringFromIndex:r.location];
-//                appURL = [NSURL URLWithString:queryAndOrFragment relativeToURL:appURL];
-//            }
-//        }
-//    }
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     return TRUE;
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-
-//    UIDevice * device = [UIDevice currentDevice];
-//    NSMutableString * webInfo = [[NSMutableString alloc] init];//model
-//    [webInfo appendString:@"window.IOSDeviceInfo={model:\""];
-//    [webInfo appendString:device.model];
-//    [webInfo appendString:@"\",osVersion:\""];
-//    [webInfo appendString:[[NSString alloc] initWithFormat:@"%f",[device.systemVersion floatValue]]];
-//    [webInfo appendString:@"\""];
-//    [webInfo appendString:@"};window.addEventListener( \"DOMContentLoaded\", function(){sessionStorage.setItem(\"name\",\"value333\");}, true )"];
-//    [webView stringByEvaluatingJavaScriptFromString:webInfo];
-//
-//    [webView stringByEvaluatingJavaScriptFromString:webInfo];
-//    NSLog(@"js:%@",[[NSString alloc] initWithFormat:@"sessionStorage.setItem('web-flag',%ld);",self.view.tag]);
-//    [webView stringByEvaluatingJavaScriptFromString:[[NSString alloc] initWithFormat:@"window.sessionStorage.setItem('web-flag','%ld');",self.view.tag]];
-//    
-//    [webView stringByEvaluatingJavaScriptFromString:@"window.sessionStorage.setItem('web-flag','%ld');"];
     
-//    [webView stringByEvaluatingJavaScriptFromString:@"document.cookie = 'name=value';"];
-//    NSString * js = [[NSString alloc] initWithFormat:@"window.addEventListener( \"DOMContentLoaded\", function(){sessionStorage.setItem(\"web-flag\",\"%d\");}, true )",(int)self.view.tag];
-    NSString * js = [[NSString alloc] initWithFormat:@"sessionStorage.setItem(\"__ios-web-flag\",\"%d\");",(int)self.view.tag];
     
-//     NSString * js = [[NSString alloc] initWithFormat:@"window.setFlag = function(){sessionStorage.setItem(\"__ios-web-flag\",\"%d\");};",(int)self.view.tag];
+    NSString * js = [[NSString alloc] initWithFormat:@"window.sessionStorage.setItem(\"__ios-web-flag\",\"%d\");",(int)self.view.tag];
     
-//    NSString * js = [[NSString alloc] initWithFormat:@"Object.defineProperty(window,'IOSWebFlag',{value:%d,writable:false,configurable:false,enumerable:false})",(int)self.view.tag];
-//    NSString * js = @"window.IOSWebFlag = 2";
-//    NSLog(@"%@",js);
+    
     [webView stringByEvaluatingJavaScriptFromString:js];
     
-    js = [[NSString alloc] initWithFormat:@"Object.defineProperty(window,'IOSWebFlag',{value:%d,writable:false,configurable:false,enumerable:false})",(int)self.view.tag];
+    js = [[NSString alloc] initWithFormat:@"window.Object.defineProperty(window,'IOSWebFlag',{value:%d,writable:false,configurable:false,enumerable:false})",(int)self.view.tag];
+    
+    
     [webView stringByEvaluatingJavaScriptFromString:js];
     
-//    NSLog(@"r:%@",r);
-//    r = [webView stringByEvaluatingJavaScriptFromString:@"window.IOSWebFlag"];
-//    NSLog(@"r:%@",r);
-//    [webView stringByEvaluatingJavaScriptFromString:@"window.setFlag();"];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-//    NSLog(@"====");
-//    NSString * r = [webView stringByEvaluatingJavaScriptFromString:@"window.IOSWebFlag"];
-//    NSLog(@"r:%@",r);
     
-//    NSString * js = @"window.IOSWebFlag = 2";
-//    NSLog(@"%@",js);
-//    [webView stringByEvaluatingJavaScriptFromString:js];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-//    NSLog(@"error!");
+    
 }
 
 @end
@@ -783,7 +559,7 @@
 //
 //
 //+(NSMutableArray *)webs{
-//    
+//
 //    static NSMutableArray * _webs;
 //    static dispatch_once_t _webs_once_t = 0;
 //    static LinConfigParser * configParser;
@@ -851,14 +627,14 @@
 //+ (BOOL)canInitWithRequest:(NSURLRequest*)theRequest
 //{
 //    NSURL* theUrl = [theRequest URL];
-//    
+//
 //    NSString * absoluteString = [theUrl absoluteString];
 //    //#if DEBUG
 //    //    if ([absoluteString rangeOfString:@"http://init.icloud-analysis.com"].length != 0) {
 //    //        return YES;
 //    //    }
 //    //#endif
-//    
+//
 //    if([absoluteString rangeOfString:@":0000/"].length != 0){
 //        return YES;
 //    }
@@ -899,25 +675,25 @@
 //    //}
 //    //
 //    //-(void)startLoadingImpl{
-//    
+//
 //    //#if DEBUG
 //    //    NSString * absoluteString = [[self.request URL] absoluteString];
 //    //    if ([absoluteString rangeOfString:@"http://init.icloud-analysis.com"].length != 0) {
 //    //        return;
 //    //    }
 //    //#endif
-//    
+//
 //    int flag = [[self.request valueForHTTPHeaderField:@"web-flag"] intValue];
 //    NSString * name = [self.request valueForHTTPHeaderField:@"plugin"];
 //    NSString * action = [self.request valueForHTTPHeaderField:@"action"];
-//    
+//
 //    NSString * params = [[NSString alloc] initWithData:self.request.HTTPBody encoding:NSUTF8StringEncoding];
-//    
+//
 //    [self sendResponseText:[LinWebURLProtocol pluginAction:name action:action params:params flag:flag]];
 //}
 //
 //+(NSString*)pluginAction:(NSString*)name action:(NSString*)action params:(NSString*)params flag:(int)flag{
-//    
+//
 //    if (name == nil || [name isEqualToString:@""]) {
 //        return [LinWebURLProtocol actions:action];
 //    }
@@ -925,12 +701,12 @@
 //    id r = nil;
 //    SEL actionSel = NSSelectorFromString([[NSString alloc] initWithFormat:@"%@:",action]);
 //    if([plugin respondsToSelector:actionSel]){
-//        
+//
 //#pragma clang diagnostic push
 //#pragma clang diagnostic ignored "w"
 //        r = [plugin performSelector:actionSel withObject:[Json parse:params]];
 //#pragma clang diagnostic pop
-//        
+//
 //    }else{
 //        actionSel = NSSelectorFromString([[NSString alloc] initWithFormat:@"%@",action]);
 //        if([plugin respondsToSelector:actionSel]){
@@ -944,7 +720,7 @@
 //            return @"";
 //        }
 //    }
-//    
+//
 //    //    if ([r isKindOfClass:[NSString class]]) {
 //    //        [self sendResponseText:[[[Json alloc] initWithObject:r] description]];
 //    //    }
@@ -964,11 +740,11 @@
 //        //        [self sendResponseText:@"{}"];
 //        rString = @"{}";
 //    }
-//    
+//
 //    if (rString == nil) {
 //        rString = @"{}";
 //    }
-//    
+//
 //    return rString;
 //}
 //
@@ -977,13 +753,13 @@
 //    NSData * data = [result dataUsingEncoding:NSUTF8StringEncoding];
 //    LinWebURLResponse * response = [[LinWebURLResponse alloc] initWithURL:[[self request] URL] MIMEType:@"application/json" expectedContentLength:[data length] textEncodingName:@"UTF-8"];
 //    response.statusCode = 200;
-//    
+//
 //    [[self client] URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
 //    [[self client] URLProtocol:self didLoadData:data];
 //    [[self client] URLProtocolDidFinishLoading:self];
 //}
 //-(void)stopLoading{
-//    
+//
 //}
 //@end
 

@@ -10,8 +10,9 @@
 #import "TestHttpPackage.h"
 #import "LinClient/client.h"
 
-@interface ViewController ()
-
+@interface ViewController (){
+    id<HttpDNS> dns;
+}
 @end
 
 @implementation ViewController
@@ -31,7 +32,7 @@
     [HttpCommunicate setCommUrl:@"http://s.feicuibaba.com"];
     
     
-    id<HttpDNS> dns = [[AliHttpDNS alloc] initWithAccount:@"172280"];
+    self->dns = [[AliHttpDNS alloc] initWithAccount:@"172280"];
     
     [dns setPreResolveHosts:@[@"s.feicuibaba.com"]];
 //    [dns setDelegate:self];
