@@ -7,25 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MRProgressView.h"
+#import "MRStopableView.h"
 
 
 /**
  You use the MRCircularProgressView class to depict the progress of a task over time.
  */
-@interface MRCircularProgressView : UIControl
+@interface MRCircularProgressView : MRProgressView<MRStopableView>
 
 /**
- A Boolean value that controls whether the receiver shows a stop button.
+ Value label.
  
- If the value of this property is NO (the default), the receiver doesnot show a stop button. If the mayStop property is
- YES a stop button will be shown. You can catch fired events like known from UIControl.
+ The label where the current progress is displayed, if the receiver's property mayStop has the value NO.
  */
-@property (nonatomic, assign) BOOL mayStop;
+@property (nonatomic, weak, readonly) UILabel *valueLabel;
 
 /**
  Current progress.
  
- Use associated setter for non animated changes. Otherwises use setProgress:aniamted:.
+ Use associated setter for non animated changes. Otherwises use setProgress:animated:.
  */
 @property (nonatomic, assign) float progress;
 
@@ -34,7 +35,21 @@
  
  Default is 0.3s. Must be larger than zero.
  */
-@property (nonatomic, assign) CFTimeInterval animationDuration;
+@property (nonatomic, assign) CFTimeInterval animationDuration UI_APPEARANCE_SELECTOR;
+
+/**
+ The line width of the outer circle
+ 
+ Default is 2.0. Must be larger than zero.
+ */
+@property (nonatomic, assign) CGFloat borderWidth UI_APPEARANCE_SELECTOR;
+
+/**
+ The line width of the inner circle
+ 
+ Default is 2.0. Must be larger than zero.
+ */
+@property (nonatomic, assign) CGFloat lineWidth UI_APPEARANCE_SELECTOR;
 
 /**
  Change progress animated.

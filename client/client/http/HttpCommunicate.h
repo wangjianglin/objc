@@ -99,7 +99,7 @@
 +(BOOL)isDebug;
 +(void)setIsDebug:(BOOL)isDebug;
 
-+(id<HttpDNS>)getHttpDNS;
++(id<HttpDNS>)httpDNS;
 +(void)setHttpDNS:(id<HttpDNS>)httpDNS;
 
 +(BOOL)mainThread;

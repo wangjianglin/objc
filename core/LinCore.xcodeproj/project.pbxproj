@@ -143,26 +143,6 @@
 		3EA8AECB1B846EF10043922A /* IOS7ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ADCE1B846EF10043922A /* IOS7ScrollView.m */; };
 		3EA8AECC1B846EF10043922A /* IOS7ScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADCF1B846EF10043922A /* IOS7ScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EA8AECD1B846EF10043922A /* ScrollImagesView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADD01B846EF10043922A /* ScrollImagesView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AECE1B846EF10043922A /* MRBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADD31B846EF10043922A /* MRBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AECF1B846EF10043922A /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ADD41B846EF10043922A /* MRBlurView.m */; };
-		3EA8AED01B846EF10043922A /* UIImage+MRImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADD51B846EF10043922A /* UIImage+MRImageEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AED11B846EF10043922A /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ADD61B846EF10043922A /* UIImage+MRImageEffects.m */; };
-		3EA8AED21B846EF10043922A /* MRActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADD81B846EF10043922A /* MRActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AED31B846EF10043922A /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ADD91B846EF10043922A /* MRActivityIndicatorView.m */; };
-		3EA8AED41B846EF10043922A /* MRCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADDA1B846EF10043922A /* MRCircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AED51B846EF10043922A /* MRCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ADDB1B846EF10043922A /* MRCircularProgressView.m */; };
-		3EA8AED61B846EF10043922A /* MRIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADDC1B846EF10043922A /* MRIconView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AED71B846EF10043922A /* MRIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ADDD1B846EF10043922A /* MRIconView.m */; };
-		3EA8AED81B846EF10043922A /* MRNavigationBarProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADDE1B846EF10043922A /* MRNavigationBarProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AED91B846EF10043922A /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ADDF1B846EF10043922A /* MRNavigationBarProgressView.m */; };
-		3EA8AEDA1B846EF10043922A /* MRProgressOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADE01B846EF10043922A /* MRProgressOverlayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AEDB1B846EF10043922A /* MRProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ADE11B846EF10043922A /* MRProgressOverlayView.m */; };
-		3EA8AEDC1B846EF10043922A /* MRProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADE21B846EF10043922A /* MRProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AEDD1B846EF10043922A /* MRMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADE41B846EF10043922A /* MRMessageInterceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AEDE1B846EF10043922A /* MRMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ADE51B846EF10043922A /* MRMessageInterceptor.m */; };
-		3EA8AEDF1B846EF10043922A /* MRProgressHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADE61B846EF10043922A /* MRProgressHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AEE01B846EF10043922A /* MRWeakProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADE71B846EF10043922A /* MRWeakProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AEE11B846EF10043922A /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ADE81B846EF10043922A /* MRWeakProxy.m */; };
 		3EA8AEE21B846EF10043922A /* ImagesView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ADE91B846EF10043922A /* ImagesView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EA8AEE31B846EF10043922A /* LinActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ADEA1B846EF10043922A /* LinActivityIndicatorView.m */; };
 		3EA8AEE41B846EF10043922A /* ALAssetsLibrarys.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ADEB1B846EF10043922A /* ALAssetsLibrarys.m */; };
@@ -254,6 +234,39 @@
 		3EA8AF401B846EF10043922A /* UIViewControllers.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8AE4D1B846EF10043922A /* UIViewControllers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EA8AFE21B84DC810043922A /* UIButtons.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8AFE01B84DC810043922A /* UIButtons.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EA8AFE31B84DC810043922A /* UIButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8AFE11B84DC810043922A /* UIButtons.m */; };
+		3ECD402D1CEDBDF200D57372 /* MRBlurView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD40081CEDBDF200D57372 /* MRBlurView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD402E1CEDBDF200D57372 /* MRBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD40091CEDBDF200D57372 /* MRBlurView.m */; };
+		3ECD402F1CEDBDF200D57372 /* UIImage+MRImageEffects.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD400A1CEDBDF200D57372 /* UIImage+MRImageEffects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD40301CEDBDF200D57372 /* UIImage+MRImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD400B1CEDBDF200D57372 /* UIImage+MRImageEffects.m */; };
+		3ECD40311CEDBDF200D57372 /* MRActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD400D1CEDBDF200D57372 /* MRActivityIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD40321CEDBDF200D57372 /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD400E1CEDBDF200D57372 /* MRActivityIndicatorView.m */; };
+		3ECD40331CEDBDF200D57372 /* MRCircularProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD400F1CEDBDF200D57372 /* MRCircularProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD40341CEDBDF200D57372 /* MRCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD40101CEDBDF200D57372 /* MRCircularProgressView.m */; };
+		3ECD40351CEDBDF200D57372 /* MRIconView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD40111CEDBDF200D57372 /* MRIconView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD40361CEDBDF200D57372 /* MRIconView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD40121CEDBDF200D57372 /* MRIconView.m */; };
+		3ECD40371CEDBDF200D57372 /* MRNavigationBarProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD40131CEDBDF200D57372 /* MRNavigationBarProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD40381CEDBDF200D57372 /* MRNavigationBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD40141CEDBDF200D57372 /* MRNavigationBarProgressView.m */; };
+		3ECD40391CEDBDF200D57372 /* MRProgressOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD40151CEDBDF200D57372 /* MRProgressOverlayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD403A1CEDBDF200D57372 /* MRProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD40161CEDBDF200D57372 /* MRProgressOverlayView.m */; };
+		3ECD403B1CEDBDF200D57372 /* MRProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD40171CEDBDF200D57372 /* MRProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD403C1CEDBDF200D57372 /* MRProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD40181CEDBDF200D57372 /* MRProgressView.m */; };
+		3ECD403D1CEDBDF200D57372 /* MRStopableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD40191CEDBDF200D57372 /* MRStopableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD403E1CEDBDF200D57372 /* MRStopButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD401A1CEDBDF200D57372 /* MRStopButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD403F1CEDBDF200D57372 /* MRStopButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD401B1CEDBDF200D57372 /* MRStopButton.m */; };
+		3ECD40401CEDBDF200D57372 /* MRProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD401C1CEDBDF200D57372 /* MRProgress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD40411CEDBDF200D57372 /* MRActivityIndicatorView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD401F1CEDBDF200D57372 /* MRActivityIndicatorView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD40421CEDBDF200D57372 /* MRActivityIndicatorView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD40201CEDBDF200D57372 /* MRActivityIndicatorView+AFNetworking.m */; };
+		3ECD40431CEDBDF200D57372 /* MRProgressOverlayView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD40211CEDBDF200D57372 /* MRProgressOverlayView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD40441CEDBDF200D57372 /* MRProgressOverlayView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD40221CEDBDF200D57372 /* MRProgressOverlayView+AFNetworking.m */; };
+		3ECD40451CEDBDF200D57372 /* MRProgressView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD40231CEDBDF200D57372 /* MRProgressView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD40461CEDBDF200D57372 /* MRProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD40241CEDBDF200D57372 /* MRProgressView+AFNetworking.m */; };
+		3ECD40471CEDBDF200D57372 /* MRMessageInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD40261CEDBDF200D57372 /* MRMessageInterceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD40481CEDBDF200D57372 /* MRMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD40271CEDBDF200D57372 /* MRMessageInterceptor.m */; };
+		3ECD40491CEDBDF200D57372 /* MRMethodCopier.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD40281CEDBDF200D57372 /* MRMethodCopier.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD404A1CEDBDF200D57372 /* MRMethodCopier.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD40291CEDBDF200D57372 /* MRMethodCopier.m */; };
+		3ECD404B1CEDBDF200D57372 /* MRProgressHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD402A1CEDBDF200D57372 /* MRProgressHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD404C1CEDBDF200D57372 /* MRWeakProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ECD402B1CEDBDF200D57372 /* MRWeakProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3ECD404D1CEDBDF200D57372 /* MRWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECD402C1CEDBDF200D57372 /* MRWeakProxy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -406,26 +419,6 @@
 		3EA8ADCE1B846EF10043922A /* IOS7ScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOS7ScrollView.m; sourceTree = "<group>"; };
 		3EA8ADCF1B846EF10043922A /* IOS7ScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOS7ScrollView.h; sourceTree = "<group>"; };
 		3EA8ADD01B846EF10043922A /* ScrollImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollImagesView.h; sourceTree = "<group>"; };
-		3EA8ADD31B846EF10043922A /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
-		3EA8ADD41B846EF10043922A /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
-		3EA8ADD51B846EF10043922A /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
-		3EA8ADD61B846EF10043922A /* UIImage+MRImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MRImageEffects.m"; sourceTree = "<group>"; };
-		3EA8ADD81B846EF10043922A /* MRActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRActivityIndicatorView.h; sourceTree = "<group>"; };
-		3EA8ADD91B846EF10043922A /* MRActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRActivityIndicatorView.m; sourceTree = "<group>"; };
-		3EA8ADDA1B846EF10043922A /* MRCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCircularProgressView.h; sourceTree = "<group>"; };
-		3EA8ADDB1B846EF10043922A /* MRCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCircularProgressView.m; sourceTree = "<group>"; };
-		3EA8ADDC1B846EF10043922A /* MRIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRIconView.h; sourceTree = "<group>"; };
-		3EA8ADDD1B846EF10043922A /* MRIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRIconView.m; sourceTree = "<group>"; };
-		3EA8ADDE1B846EF10043922A /* MRNavigationBarProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNavigationBarProgressView.h; sourceTree = "<group>"; };
-		3EA8ADDF1B846EF10043922A /* MRNavigationBarProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNavigationBarProgressView.m; sourceTree = "<group>"; };
-		3EA8ADE01B846EF10043922A /* MRProgressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressOverlayView.h; sourceTree = "<group>"; };
-		3EA8ADE11B846EF10043922A /* MRProgressOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressOverlayView.m; sourceTree = "<group>"; };
-		3EA8ADE21B846EF10043922A /* MRProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgress.h; sourceTree = "<group>"; };
-		3EA8ADE41B846EF10043922A /* MRMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMessageInterceptor.h; sourceTree = "<group>"; };
-		3EA8ADE51B846EF10043922A /* MRMessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMessageInterceptor.m; sourceTree = "<group>"; };
-		3EA8ADE61B846EF10043922A /* MRProgressHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressHelper.h; sourceTree = "<group>"; };
-		3EA8ADE71B846EF10043922A /* MRWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRWeakProxy.h; sourceTree = "<group>"; };
-		3EA8ADE81B846EF10043922A /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
 		3EA8ADE91B846EF10043922A /* ImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesView.h; sourceTree = "<group>"; };
 		3EA8ADEA1B846EF10043922A /* LinActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinActivityIndicatorView.m; sourceTree = "<group>"; };
 		3EA8ADEB1B846EF10043922A /* ALAssetsLibrarys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALAssetsLibrarys.m; sourceTree = "<group>"; };
@@ -517,6 +510,39 @@
 		3EA8AE4D1B846EF10043922A /* UIViewControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewControllers.h; sourceTree = "<group>"; };
 		3EA8AFE01B84DC810043922A /* UIButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIButtons.h; sourceTree = "<group>"; };
 		3EA8AFE11B84DC810043922A /* UIButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIButtons.m; sourceTree = "<group>"; };
+		3ECD40081CEDBDF200D57372 /* MRBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRBlurView.h; sourceTree = "<group>"; };
+		3ECD40091CEDBDF200D57372 /* MRBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRBlurView.m; sourceTree = "<group>"; };
+		3ECD400A1CEDBDF200D57372 /* UIImage+MRImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MRImageEffects.h"; sourceTree = "<group>"; };
+		3ECD400B1CEDBDF200D57372 /* UIImage+MRImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MRImageEffects.m"; sourceTree = "<group>"; };
+		3ECD400D1CEDBDF200D57372 /* MRActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRActivityIndicatorView.h; sourceTree = "<group>"; };
+		3ECD400E1CEDBDF200D57372 /* MRActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRActivityIndicatorView.m; sourceTree = "<group>"; };
+		3ECD400F1CEDBDF200D57372 /* MRCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCircularProgressView.h; sourceTree = "<group>"; };
+		3ECD40101CEDBDF200D57372 /* MRCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCircularProgressView.m; sourceTree = "<group>"; };
+		3ECD40111CEDBDF200D57372 /* MRIconView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRIconView.h; sourceTree = "<group>"; };
+		3ECD40121CEDBDF200D57372 /* MRIconView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRIconView.m; sourceTree = "<group>"; };
+		3ECD40131CEDBDF200D57372 /* MRNavigationBarProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRNavigationBarProgressView.h; sourceTree = "<group>"; };
+		3ECD40141CEDBDF200D57372 /* MRNavigationBarProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRNavigationBarProgressView.m; sourceTree = "<group>"; };
+		3ECD40151CEDBDF200D57372 /* MRProgressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressOverlayView.h; sourceTree = "<group>"; };
+		3ECD40161CEDBDF200D57372 /* MRProgressOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressOverlayView.m; sourceTree = "<group>"; };
+		3ECD40171CEDBDF200D57372 /* MRProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressView.h; sourceTree = "<group>"; };
+		3ECD40181CEDBDF200D57372 /* MRProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRProgressView.m; sourceTree = "<group>"; };
+		3ECD40191CEDBDF200D57372 /* MRStopableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRStopableView.h; sourceTree = "<group>"; };
+		3ECD401A1CEDBDF200D57372 /* MRStopButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRStopButton.h; sourceTree = "<group>"; };
+		3ECD401B1CEDBDF200D57372 /* MRStopButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRStopButton.m; sourceTree = "<group>"; };
+		3ECD401C1CEDBDF200D57372 /* MRProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgress.h; sourceTree = "<group>"; };
+		3ECD401F1CEDBDF200D57372 /* MRActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MRActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
+		3ECD40201CEDBDF200D57372 /* MRActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MRActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
+		3ECD40211CEDBDF200D57372 /* MRProgressOverlayView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MRProgressOverlayView+AFNetworking.h"; sourceTree = "<group>"; };
+		3ECD40221CEDBDF200D57372 /* MRProgressOverlayView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MRProgressOverlayView+AFNetworking.m"; sourceTree = "<group>"; };
+		3ECD40231CEDBDF200D57372 /* MRProgressView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MRProgressView+AFNetworking.h"; sourceTree = "<group>"; };
+		3ECD40241CEDBDF200D57372 /* MRProgressView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MRProgressView+AFNetworking.m"; sourceTree = "<group>"; };
+		3ECD40261CEDBDF200D57372 /* MRMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMessageInterceptor.h; sourceTree = "<group>"; };
+		3ECD40271CEDBDF200D57372 /* MRMessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMessageInterceptor.m; sourceTree = "<group>"; };
+		3ECD40281CEDBDF200D57372 /* MRMethodCopier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRMethodCopier.h; sourceTree = "<group>"; };
+		3ECD40291CEDBDF200D57372 /* MRMethodCopier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRMethodCopier.m; sourceTree = "<group>"; };
+		3ECD402A1CEDBDF200D57372 /* MRProgressHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRProgressHelper.h; sourceTree = "<group>"; };
+		3ECD402B1CEDBDF200D57372 /* MRWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRWeakProxy.h; sourceTree = "<group>"; };
+		3ECD402C1CEDBDF200D57372 /* MRWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRWeakProxy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -815,52 +841,13 @@
 		3EA8ADD11B846EF10043922A /* MRProgress */ = {
 			isa = PBXGroup;
 			children = (
-				3EA8ADD21B846EF10043922A /* Blur */,
-				3EA8ADD71B846EF10043922A /* Components */,
-				3EA8ADE21B846EF10043922A /* MRProgress.h */,
-				3EA8ADE31B846EF10043922A /* Utils */,
+				3ECD40071CEDBDF200D57372 /* Blur */,
+				3ECD400C1CEDBDF200D57372 /* Components */,
+				3ECD401C1CEDBDF200D57372 /* MRProgress.h */,
+				3ECD401D1CEDBDF200D57372 /* Support */,
+				3ECD40251CEDBDF200D57372 /* Utils */,
 			);
 			path = MRProgress;
-			sourceTree = "<group>";
-		};
-		3EA8ADD21B846EF10043922A /* Blur */ = {
-			isa = PBXGroup;
-			children = (
-				3EA8ADD31B846EF10043922A /* MRBlurView.h */,
-				3EA8ADD41B846EF10043922A /* MRBlurView.m */,
-				3EA8ADD51B846EF10043922A /* UIImage+MRImageEffects.h */,
-				3EA8ADD61B846EF10043922A /* UIImage+MRImageEffects.m */,
-			);
-			path = Blur;
-			sourceTree = "<group>";
-		};
-		3EA8ADD71B846EF10043922A /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				3EA8ADD81B846EF10043922A /* MRActivityIndicatorView.h */,
-				3EA8ADD91B846EF10043922A /* MRActivityIndicatorView.m */,
-				3EA8ADDA1B846EF10043922A /* MRCircularProgressView.h */,
-				3EA8ADDB1B846EF10043922A /* MRCircularProgressView.m */,
-				3EA8ADDC1B846EF10043922A /* MRIconView.h */,
-				3EA8ADDD1B846EF10043922A /* MRIconView.m */,
-				3EA8ADDE1B846EF10043922A /* MRNavigationBarProgressView.h */,
-				3EA8ADDF1B846EF10043922A /* MRNavigationBarProgressView.m */,
-				3EA8ADE01B846EF10043922A /* MRProgressOverlayView.h */,
-				3EA8ADE11B846EF10043922A /* MRProgressOverlayView.m */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		3EA8ADE31B846EF10043922A /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				3EA8ADE41B846EF10043922A /* MRMessageInterceptor.h */,
-				3EA8ADE51B846EF10043922A /* MRMessageInterceptor.m */,
-				3EA8ADE61B846EF10043922A /* MRProgressHelper.h */,
-				3EA8ADE71B846EF10043922A /* MRWeakProxy.h */,
-				3EA8ADE81B846EF10043922A /* MRWeakProxy.m */,
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 		3EA8ADFB1B846EF10043922A /* Indicator */ = {
@@ -955,6 +942,74 @@
 			path = ImagePicker;
 			sourceTree = "<group>";
 		};
+		3ECD40071CEDBDF200D57372 /* Blur */ = {
+			isa = PBXGroup;
+			children = (
+				3ECD40081CEDBDF200D57372 /* MRBlurView.h */,
+				3ECD40091CEDBDF200D57372 /* MRBlurView.m */,
+				3ECD400A1CEDBDF200D57372 /* UIImage+MRImageEffects.h */,
+				3ECD400B1CEDBDF200D57372 /* UIImage+MRImageEffects.m */,
+			);
+			path = Blur;
+			sourceTree = "<group>";
+		};
+		3ECD400C1CEDBDF200D57372 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3ECD400D1CEDBDF200D57372 /* MRActivityIndicatorView.h */,
+				3ECD400E1CEDBDF200D57372 /* MRActivityIndicatorView.m */,
+				3ECD400F1CEDBDF200D57372 /* MRCircularProgressView.h */,
+				3ECD40101CEDBDF200D57372 /* MRCircularProgressView.m */,
+				3ECD40111CEDBDF200D57372 /* MRIconView.h */,
+				3ECD40121CEDBDF200D57372 /* MRIconView.m */,
+				3ECD40131CEDBDF200D57372 /* MRNavigationBarProgressView.h */,
+				3ECD40141CEDBDF200D57372 /* MRNavigationBarProgressView.m */,
+				3ECD40151CEDBDF200D57372 /* MRProgressOverlayView.h */,
+				3ECD40161CEDBDF200D57372 /* MRProgressOverlayView.m */,
+				3ECD40171CEDBDF200D57372 /* MRProgressView.h */,
+				3ECD40181CEDBDF200D57372 /* MRProgressView.m */,
+				3ECD40191CEDBDF200D57372 /* MRStopableView.h */,
+				3ECD401A1CEDBDF200D57372 /* MRStopButton.h */,
+				3ECD401B1CEDBDF200D57372 /* MRStopButton.m */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3ECD401D1CEDBDF200D57372 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				3ECD401E1CEDBDF200D57372 /* AFNetworking */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		3ECD401E1CEDBDF200D57372 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				3ECD401F1CEDBDF200D57372 /* MRActivityIndicatorView+AFNetworking.h */,
+				3ECD40201CEDBDF200D57372 /* MRActivityIndicatorView+AFNetworking.m */,
+				3ECD40211CEDBDF200D57372 /* MRProgressOverlayView+AFNetworking.h */,
+				3ECD40221CEDBDF200D57372 /* MRProgressOverlayView+AFNetworking.m */,
+				3ECD40231CEDBDF200D57372 /* MRProgressView+AFNetworking.h */,
+				3ECD40241CEDBDF200D57372 /* MRProgressView+AFNetworking.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		3ECD40251CEDBDF200D57372 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3ECD40261CEDBDF200D57372 /* MRMessageInterceptor.h */,
+				3ECD40271CEDBDF200D57372 /* MRMessageInterceptor.m */,
+				3ECD40281CEDBDF200D57372 /* MRMethodCopier.h */,
+				3ECD40291CEDBDF200D57372 /* MRMethodCopier.m */,
+				3ECD402A1CEDBDF200D57372 /* MRProgressHelper.h */,
+				3ECD402B1CEDBDF200D57372 /* MRWeakProxy.h */,
+				3ECD402C1CEDBDF200D57372 /* MRWeakProxy.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -962,13 +1017,29 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ECD40391CEDBDF200D57372 /* MRProgressOverlayView.h in Headers */,
+				3ECD40401CEDBDF200D57372 /* MRProgress.h in Headers */,
+				3ECD402D1CEDBDF200D57372 /* MRBlurView.h in Headers */,
+				3ECD40351CEDBDF200D57372 /* MRIconView.h in Headers */,
+				3ECD40431CEDBDF200D57372 /* MRProgressOverlayView+AFNetworking.h in Headers */,
+				3ECD40371CEDBDF200D57372 /* MRNavigationBarProgressView.h in Headers */,
+				3ECD404B1CEDBDF200D57372 /* MRProgressHelper.h in Headers */,
+				3ECD40491CEDBDF200D57372 /* MRMethodCopier.h in Headers */,
+				3ECD40411CEDBDF200D57372 /* MRActivityIndicatorView+AFNetworking.h in Headers */,
+				3ECD40471CEDBDF200D57372 /* MRMessageInterceptor.h in Headers */,
+				3ECD403E1CEDBDF200D57372 /* MRStopButton.h in Headers */,
+				3ECD40331CEDBDF200D57372 /* MRCircularProgressView.h in Headers */,
+				3ECD40311CEDBDF200D57372 /* MRActivityIndicatorView.h in Headers */,
+				3ECD40451CEDBDF200D57372 /* MRProgressView+AFNetworking.h in Headers */,
+				3ECD404C1CEDBDF200D57372 /* MRWeakProxy.h in Headers */,
+				3ECD402F1CEDBDF200D57372 /* UIImage+MRImageEffects.h in Headers */,
+				3ECD403B1CEDBDF200D57372 /* MRProgressView.h in Headers */,
+				3ECD403D1CEDBDF200D57372 /* MRStopableView.h in Headers */,
 				3E0F5F7B1C71C6A30043CDFE /* AppStoreUpdate.h in Headers */,
 				3E0F5F7F1C71C6D50043CDFE /* EnterpriseUpdate.h in Headers */,
 				3EA8AFE21B84DC810043922A /* UIButtons.h in Headers */,
 				3EA8AEC51B846EF10043922A /* LocalStorage.h in Headers */,
-				3EA8AECE1B846EF10043922A /* MRBlurView.h in Headers */,
 				3EA8AECD1B846EF10043922A /* ScrollImagesView.h in Headers */,
-				3EA8AEDF1B846EF10043922A /* MRProgressHelper.h in Headers */,
 				3EA8AE6A1B846EF10043922A /* SCMediaTypeConfiguration.h in Headers */,
 				3EA8AE561B846EF10043922A /* CIImageRendererUtils.h in Headers */,
 				3EA8AE881B846EF10043922A /* SCRecordSessionManager.h in Headers */,
@@ -994,11 +1065,9 @@
 				3EA8AE801B846EF10043922A /* SCSwipeableFilterView.h in Headers */,
 				3EA8AEEE1B846EF10043922A /* NSURLConnections.h in Headers */,
 				3EA8AF311B846EF10043922A /* QBImagePickerAssetView.h in Headers */,
-				3EA8AED41B846EF10043922A /* MRCircularProgressView.h in Headers */,
 				3EA8AE791B846EF10043922A /* SCRecordSession.h in Headers */,
 				3EA8AEC81B846EF10043922A /* FlowView.h in Headers */,
 				3EA8AEC61B846EF10043922A /* ImageViews.h in Headers */,
-				3EA8AED81B846EF10043922A /* MRNavigationBarProgressView.h in Headers */,
 				3EA8AEA71B846EF10043922A /* FormSegueCell.h in Headers */,
 				3EA8AE971B846EF10043922A /* FormDateCell.h in Headers */,
 				3EA8AE931B846EF10043922A /* FormButtonDescriptor.h in Headers */,
@@ -1023,7 +1092,6 @@
 				3EA8AF401B846EF10043922A /* UIViewControllers.h in Headers */,
 				3EA8AE6E1B846EF10043922A /* SCPlayer.h in Headers */,
 				3EA8AEA91B846EF10043922A /* FormSegueDescriptor.h in Headers */,
-				3EA8AED21B846EF10043922A /* MRActivityIndicatorView.h in Headers */,
 				3EA8AE551B846EF10043922A /* CIImageRenderer.h in Headers */,
 				3EA8AF2E1B846EF10043922A /* QBImagePickerAssetCell.h in Headers */,
 				3EA8AEF31B846EF10043922A /* ALAssetsLibrarys.h in Headers */,
@@ -1047,7 +1115,6 @@
 				3EA8AEF71B846EF10043922A /* UIGestureRecognizers.h in Headers */,
 				3EA8AE681B846EF10043922A /* SCImageView.h in Headers */,
 				3EA8AECA1B846EF10043922A /* UIViews.h in Headers */,
-				3EA8AED01B846EF10043922A /* UIImage+MRImageEffects.h in Headers */,
 				3EA8AF2D1B846EF10043922A /* QBImagePicker.h in Headers */,
 				3EA8AE9D1B846EF10043922A /* FormOptionsSelectorController.h in Headers */,
 				3EA8AEFB1B846EF10043922A /* MHTextField.h in Headers */,
@@ -1058,7 +1125,6 @@
 				3EA8AECC1B846EF10043922A /* IOS7ScrollView.h in Headers */,
 				3EA8AF331B846EF10043922A /* QBImagePickerAssetViewDelegate.h in Headers */,
 				3EA8AE861B846EF10043922A /* SCWeakSelectorTarget.h in Headers */,
-				3EA8AEDC1B846EF10043922A /* MRProgress.h in Headers */,
 				3EA8AF0A1B846EF10043922A /* UIViewController+RBStoryboardLink.h in Headers */,
 				3EA8AE5A1B846EF10043922A /* SCAudioConfiguration.h in Headers */,
 				3EA8AE8D1B846EF10043922A /* Vedios.h in Headers */,
@@ -1069,20 +1135,16 @@
 				3EA8AF1E1B846EF10043922A /* UIScrollView+MJExtension.h in Headers */,
 				3EA8AF2A1B846EF10043922A /* QBAssetCollectionViewController.h in Headers */,
 				3EA8AF0C1B846EF10043922A /* UIBarButtonItems.h in Headers */,
-				3EA8AEE01B846EF10043922A /* MRWeakProxy.h in Headers */,
 				3EA8AE8F1B846EF10043922A /* FormBaseCell.h in Headers */,
 				3EA8AE8A1B846EF10043922A /* SCTouchDetector.h in Headers */,
 				3EA8AE6C1B846EF10043922A /* SCPhotoConfiguration.h in Headers */,
 				3EA8AF161B846EF10043922A /* MJRefreshBaseView.h in Headers */,
 				3EA8AE501B846EF10043922A /* CameraViewController.h in Headers */,
-				3EA8AEDD1B846EF10043922A /* MRMessageInterceptor.h in Headers */,
-				3EA8AED61B846EF10043922A /* MRIconView.h in Headers */,
 				3EA8AF271B846EF10043922A /* UserDefaults.h in Headers */,
 				3EA8AE611B846EF10043922A /* SCFilter.h in Headers */,
 				3EA8AF251B846EF10043922A /* Global.h in Headers */,
 				3EA8AF241B846EF10043922A /* Controls.h in Headers */,
 				3EA8AF0F1B846EF10043922A /* UncaughtExceptionHandlers.h in Headers */,
-				3EA8AEDA1B846EF10043922A /* MRProgressOverlayView.h in Headers */,
 				3EA8AF201B846EF10043922A /* UIScrollView+MJRefresh.h in Headers */,
 				3EA8AF221B846EF10043922A /* UIView+MJExtension.h in Headers */,
 				3EA8AE951B846EF10043922A /* FormCheckCell.h in Headers */,
@@ -1194,16 +1256,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EA8AF071B846EF10043922A /* RBStoryboardPushSegue.m in Sources */,
+				3ECD404A1CEDBDF200D57372 /* MRMethodCopier.m in Sources */,
 				3E0F5F801C71C6D50043CDFE /* EnterpriseUpdate.m in Sources */,
 				3EA8AEA41B846EF10043922A /* FormSectionDescriptor.m in Sources */,
 				3EA8AF2F1B846EF10043922A /* QBImagePickerAssetCell.m in Sources */,
 				3EA8AE571B846EF10043922A /* CIImageRendererUtils.m in Sources */,
 				3EA8AE871B846EF10043922A /* SCWeakSelectorTarget.m in Sources */,
+				3ECD402E1CEDBDF200D57372 /* MRBlurView.m in Sources */,
 				3EA8AEB71B846EF10043922A /* FormViewController.m in Sources */,
+				3ECD40381CEDBDF200D57372 /* MRNavigationBarProgressView.m in Sources */,
 				3EA8AF381B846EF10043922A /* QBImagePickerFooterView.m in Sources */,
-				3EA8AED71B846EF10043922A /* MRIconView.m in Sources */,
 				3EA8AE8E1B846EF10043922A /* Vedios.m in Sources */,
 				3EA8AEC21B846EF10043922A /* ScrollImagesView.m in Sources */,
+				3ECD40421CEDBDF200D57372 /* MRActivityIndicatorView+AFNetworking.m in Sources */,
 				3EA8AE7D1B846EF10043922A /* SCRecordSessionSegment.m in Sources */,
 				3E0F5F7C1C71C6A30043CDFE /* AppStoreUpdate.m in Sources */,
 				3EA8AE9E1B846EF10043922A /* FormOptionsSelectorController.m in Sources */,
@@ -1219,45 +1284,48 @@
 				3EA8AE601B846EF10043922A /* SCContext.m in Sources */,
 				3EA8AEC71B846EF10043922A /* FlowView.m in Sources */,
 				3EA8AF361B846EF10043922A /* QBImagePickerController.m in Sources */,
-				3EA8AED91B846EF10043922A /* MRNavigationBarProgressView.m in Sources */,
-				3EA8AED31B846EF10043922A /* MRActivityIndicatorView.m in Sources */,
 				3EA8AE5D1B846EF10043922A /* SCAudioTools.m in Sources */,
+				3ECD40461CEDBDF200D57372 /* MRProgressView+AFNetworking.m in Sources */,
 				3EA8AFE31B84DC810043922A /* UIButtons.m in Sources */,
 				3EA8AEAF1B846EF10043922A /* FormSwitchCell.m in Sources */,
 				3EA8AEED1B846EF10043922A /* NSURLConnections.m in Sources */,
 				3EA8AE4F1B846EF10043922A /* ImagesView.m in Sources */,
 				3EA8AF291B846EF10043922A /* QCheckBox.m in Sources */,
 				3EA8AE831B846EF10043922A /* SCVideoConfiguration.m in Sources */,
+				3ECD40341CEDBDF200D57372 /* MRCircularProgressView.m in Sources */,
 				3EA8AEA21B846EF10043922A /* FormRowDescriptor.m in Sources */,
 				3EA8AE641B846EF10043922A /* SCFilterAnimation.m in Sources */,
 				3EA8AEF81B846EF10043922A /* Global.mm in Sources */,
+				3ECD40481CEDBDF200D57372 /* MRMessageInterceptor.m in Sources */,
 				3EA8AF3C1B846EF10043922A /* QBImagePickerVideoInfoView.m in Sources */,
 				3EA8AEB11B846EF10043922A /* FormTextCell.m in Sources */,
 				3EA8AE7F1B846EF10043922A /* SCSampleBufferHolder.m in Sources */,
+				3ECD404D1CEDBDF200D57372 /* MRWeakProxy.m in Sources */,
 				3EA8AF0D1B846EF10043922A /* UIBarButtonItems.m in Sources */,
 				3EA8AF3F1B846EF10043922A /* UIGestureRecognizers.m in Sources */,
 				3EA8AE691B846EF10043922A /* SCImageView.m in Sources */,
+				3ECD403C1CEDBDF200D57372 /* MRProgressView.m in Sources */,
 				3EA8AE941B846EF10043922A /* FormButtonDescriptor.m in Sources */,
 				3EA8AF2B1B846EF10043922A /* QBAssetCollectionViewController.m in Sources */,
 				3EA8AE781B846EF10043922A /* SCRecorderToolsView.m in Sources */,
-				3EA8AEE11B846EF10043922A /* MRWeakProxy.m in Sources */,
 				3EA8AE6F1B846EF10043922A /* SCPlayer.m in Sources */,
 				3EA8AEB51B846EF10043922A /* FormTextEditController.m in Sources */,
 				3EA8AE591B846EF10043922A /* SCAssetExportSession.m in Sources */,
 				3EA8AE4E1B846EF10043922A /* ImageViews.m in Sources */,
-				3EA8AEDB1B846EF10043922A /* MRProgressOverlayView.m in Sources */,
 				3EA8AE961B846EF10043922A /* FormCheckCell.m in Sources */,
 				3EA8AEE81B846EF10043922A /* UILabels.m in Sources */,
 				3EA8AE6D1B846EF10043922A /* SCPhotoConfiguration.m in Sources */,
 				3EA8AF031B846EF10043922A /* RBStoryboardModalSegue.m in Sources */,
-				3EA8AEDE1B846EF10043922A /* MRMessageInterceptor.m in Sources */,
+				3ECD40301CEDBDF200D57372 /* UIImage+MRImageEffects.m in Sources */,
 				3EA8AEA61B846EF10043922A /* FormSegmentedControlCell.m in Sources */,
+				3ECD403F1CEDBDF200D57372 /* MRStopButton.m in Sources */,
 				3EA8AEA81B846EF10043922A /* FormSegueCell.m in Sources */,
 				3EA8AE711B846EF10043922A /* SCRecorder.m in Sources */,
 				3EA8AEEA1B846EF10043922A /* Images.m in Sources */,
 				3EA8AF001B846EF10043922A /* RBStoryboardLink.m in Sources */,
 				3EA8AEF01B846EF10043922A /* UserDefaults.mm in Sources */,
 				3EA8AEF11B846EF10043922A /* AlertView.m in Sources */,
+				3ECD40441CEDBDF200D57372 /* MRProgressOverlayView+AFNetworking.m in Sources */,
 				3EA8AECB1B846EF10043922A /* IOS7ScrollView.m in Sources */,
 				3EA8AE9A1B846EF10043922A /* FormDescriptor.m in Sources */,
 				3EA8AF191B846EF10043922A /* MJRefreshConst.m in Sources */,
@@ -1266,9 +1334,11 @@
 				3EA8AE8C1B846EF10043922A /* SCWatermarkOverlayView.m in Sources */,
 				3EA8AE661B846EF10043922A /* SCFilterSelectorView.m in Sources */,
 				3EA8AEE41B846EF10043922A /* ALAssetsLibrarys.m in Sources */,
+				3ECD40361CEDBDF200D57372 /* MRIconView.m in Sources */,
 				3EA8AF1F1B846EF10043922A /* UIScrollView+MJExtension.m in Sources */,
 				3EA8AE761B846EF10043922A /* SCRecorderTools.m in Sources */,
 				3EA8AEA01B846EF10043922A /* FormPickerCell.m in Sources */,
+				3ECD40321CEDBDF200D57372 /* MRActivityIndicatorView.m in Sources */,
 				3EA8AF171B846EF10043922A /* MJRefreshBaseView.m in Sources */,
 				3EA8AF051B846EF10043922A /* RBStoryboardPopoverSegue.m in Sources */,
 				3EA8AEE51B846EF10043922A /* TextViews.m in Sources */,
@@ -1291,9 +1361,8 @@
 				3EA8AE5B1B846EF10043922A /* SCAudioConfiguration.m in Sources */,
 				3EA8AE811B846EF10043922A /* SCSwipeableFilterView.m in Sources */,
 				3EA8AE8B1B846EF10043922A /* SCTouchDetector.m in Sources */,
-				3EA8AED51B846EF10043922A /* MRCircularProgressView.m in Sources */,
-				3EA8AECF1B846EF10043922A /* MRBlurView.m in Sources */,
 				3EA8AF211B846EF10043922A /* UIScrollView+MJRefresh.m in Sources */,
+				3ECD403A1CEDBDF200D57372 /* MRProgressOverlayView.m in Sources */,
 				3EA8AEB91B846EF10043922A /* HZAreaPickerView.m in Sources */,
 				3EA8AEEC1B846EF10043922A /* LinURLCacheProtocol.m in Sources */,
 				3EA8AF1B1B846EF10043922A /* MJRefreshFooterView.m in Sources */,
@@ -1304,7 +1373,6 @@
 				3EA8AE6B1B846EF10043922A /* SCMediaTypeConfiguration.m in Sources */,
 				3EA8AE7A1B846EF10043922A /* SCRecordSession.m in Sources */,
 				3EA8AEBF1B846EF10043922A /* ZHPickView.m in Sources */,
-				3EA8AED11B846EF10043922A /* UIImage+MRImageEffects.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -291,7 +291,7 @@
 -(void(^)(HttpError*))mainThreadFault:(HttpCommunicateResult*)httpResult pack:(HttpPackage*)pack set:(AutoResetEvent*)set fault:(void(^)(HttpError*))fault{
     
     id tmpFault = ^(HttpError*error){
-        [httpResult setResult:false obj:nil];
+        [httpResult setResult:false obj:error];
 //        self.fireHttprequestFault(pack,error);
         [self fireHttprequestFault:pack error:error];
         if (fault == nil) {
@@ -598,7 +598,7 @@ HttpCommunicateImpl * global(){
     global().commUrl = commUrl;
 }
 
-+(id<HttpDNS>)getHttpDNS{
++(id<HttpDNS>)httpDNS{
     return global().httpDNS;
 }
 

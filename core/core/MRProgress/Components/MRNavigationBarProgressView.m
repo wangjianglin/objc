@@ -7,8 +7,13 @@
 //
 
 #import "MRNavigationBarProgressView.h"
-#import "MRMessageInterceptor.h"
 #import <objc/runtime.h>
+
+
+
+static NSString *const MR_UINavigationControllerDidShowViewControllerNotification = @"UINavigationControllerDidShowViewControllerNotification";
+static NSString *const MR_UINavigationControllerLastVisibleViewController = @"UINavigationControllerLastVisibleViewController";
+
 
 
 @interface UINavigationController (NavigationBarProgressView_Private)
@@ -32,7 +37,7 @@
 
 
 
-@interface MRNavigationBarProgressView () <UINavigationControllerDelegate>
+@interface MRNavigationBarProgressView ()
 
 @property (nonatomic, weak, readwrite) UIView *progressView;
 @property (nonatomic, weak, readwrite) UIViewController *viewController;
@@ -42,8 +47,16 @@
 
 
 @implementation MRNavigationBarProgressView
+@dynamic progress;
 
-static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarProgressViewObservationContext;
+static NSNumberFormatter *progressNumberFormatter;
+
++ (void)initialize {
+    NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
+    numberFormatter.numberStyle = NSNumberFormatterPercentStyle;
+    numberFormatter.locale = NSLocale.currentLocale;
+    progressNumberFormatter = numberFormatter;
+}
 
 + (instancetype)progressViewForNavigationController:(UINavigationController *)navigationController {
     // Try to get existing bar
@@ -58,7 +71,7 @@ static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarPro
     progressView.barView = navigationBar;
     
     progressView.progressTintColor = navigationBar.tintColor
-        ?: UIApplication.sharedApplication.delegate.window.tintColor;
+        ? navigationBar.tintColor : UIApplication.sharedApplication.delegate.window.tintColor;
     
     // Store bar and add to view hierachy
     navigationController.progressView = progressView;
@@ -66,14 +79,7 @@ static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarPro
     
     // Observe topItem
     progressView.viewController = navigationController.topViewController;
-    id delegate = navigationController.delegate;
-    if (delegate) {
-        MRMessageInterceptor *messageInterceptor = [[MRMessageInterceptor alloc] initWithMiddleMan:progressView];
-        messageInterceptor.receiver = delegate;
-        navigationController.delegate = (id<UINavigationControllerDelegate>)messageInterceptor;
-    } else {
-        navigationController.delegate = progressView;
-    }
+    [progressView registerObserverForNavigationController:navigationController];
     
     return progressView;
 }
@@ -99,6 +105,10 @@ static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarPro
 }
 
 - (void)commonInit {
+    self.isAccessibilityElement = YES;
+    self.accessibilityLabel = NSLocalizedString(@"Determinate Progress", @"Accessibility label for navigation bar progress view");
+    self.accessibilityTraits = UIAccessibilityTraitUpdatesFrequently;
+    
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.opaque = NO;
     
@@ -109,22 +119,29 @@ static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarPro
     self.progressView = progressView;
     
     self.progress = 0;
+    
+    [self tintColorDidChange];
 }
 
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    // Check if our controller is still the topViewController or was popped
-    NSUInteger index = [navigationController.viewControllers indexOfObject:self.viewController];
-    if (index == NSNotFound || index < navigationController.viewControllers.count-1) {
-        if ([((id<NSObject>)navigationController.delegate) isKindOfClass:MRMessageInterceptor.class]) {
-            // Stop intercepting navigationBar.delegate messages
-            id receiver = ((MRMessageInterceptor *)navigationController.delegate).receiver;
-            navigationController.delegate = receiver != self ? receiver : nil;
-            
-            // Forward intercepted message
-            [navigationController.delegate navigationController:navigationController willShowViewController:viewController animated:animated];
-        } else {
-            navigationController.delegate = nil;
-        }
+- (void)registerObserverForNavigationController:(UINavigationController *)navigationController {
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(navigationControllerDidShowViewController:)
+                                               name:MR_UINavigationControllerDidShowViewControllerNotification
+                                             object:navigationController];
+}
+
+- (void)unregisterObserverForNavigationController:(UINavigationController *)navigationController {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
+- (void)navigationControllerDidShowViewController:(NSNotification *)notification {
+    UINavigationController *navigationController = notification.object;
+    UIViewController *lastVisibleVC = notification.userInfo[MR_UINavigationControllerLastVisibleViewController];
+    
+    // Check if our controller will be still the topViewController or was popped
+    if (lastVisibleVC == self.viewController) {
+        // Unregister observer
+        [self unregisterObserverForNavigationController:navigationController];
         
         // Remove reference
         navigationController.progressView = nil;
@@ -132,6 +149,10 @@ static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarPro
         // Remove receiver from view hierachy
         [self removeFromSuperview];
     }
+}
+
+- (void) dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 - (void)setBarView:(UIView *)barView {
@@ -196,22 +217,25 @@ static void *MRNavigationBarProgressViewObservationContext = &MRNavigationBarPro
 - (void)progressDidChange {
     self.progressView.alpha = self.progress >= 1 ? 0 : 1;
     [self layoutProgressView];
+    
+    self.accessibilityValue = [progressNumberFormatter stringFromNumber:@(self.progress)];
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self);
 }
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {
     if (animated) {
-        if (progress > 0 && progress < 1.0 && self.progressView.alpha == 0) {
+        if (progress > 0 && progress < 1.0 && self.progressView.alpha <= CGFLOAT_MIN) {
             // progressView was hidden. Make it visible first.
             self.progressView.alpha = 1;
         }
         
         void(^completion)(BOOL) = ^(BOOL finished){
             [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                self.progressView.alpha = progress >= 1 ? 0 : 1;
+                self.progressView.alpha = self.progress >= 1 ? 0 : 1;
             } completion:nil];
         };
         
-        if (progress > self.progress || self.progress == 1) {
+        if (progress > self.progress || self.progress >= 1) {
             // Progress increased: ease out.
             [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 [self _setProgress:progress];

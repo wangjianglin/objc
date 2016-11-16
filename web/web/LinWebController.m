@@ -227,26 +227,27 @@
 }
 
 -(NSString*)actions:(NSString*)action{
+    NSString * r = @"";
     if ([action isEqualToString:@"platform"]) {
-        return @"ios";
+        r =  @"ios";
     }else if ([action isEqualToString:@"productName"]){
         UIDevice * device = [UIDevice currentDevice];
-        return device.name;
+        r =  device.name;
     }else if ([action isEqualToString:@"versionName"]){
         UIDevice * device = [UIDevice currentDevice];
-        return device.systemVersion;
+        r =  device.systemVersion;
     }else if ([action isEqualToString:@"version"]){
         UIDevice * device = [UIDevice currentDevice];
         return [[NSString alloc] initWithFormat:@"%f",[device.systemVersion floatValue]];
     }else if ([action isEqualToString:@"model"]){
         UIDevice * device = [UIDevice currentDevice];
-        return [[NSString alloc] initWithFormat:@"%@",device.model];
+        r =  [[NSString alloc] initWithFormat:@"%@",device.model];
     }else if ([action isEqualToString:@"uuid"]){
         //        UIDevice * device = [UIDevice currentDevice];
         //        [self sendResponseText:[[NSString alloc] initWithFormat:@"\"%@\"",@"------------"]];
-        return @"------------";
+        r =  @"------------";
     }
-    return nil;
+    return [[NSString alloc] initWithFormat:@"\"%@\"",r];
 }
 +(LinConfigParser *)plugins{
     static dispatch_once_t _plugins_once_t = 0;

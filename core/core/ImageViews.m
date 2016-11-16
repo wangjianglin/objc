@@ -205,6 +205,8 @@ Queue * ___CacheImageView_instance;
             [self setImage:[UIImage imageNamed:self.path]];
         }
         
+    }else{
+        [self setImage:[UIImage imageNamed:self.noImage]];
     }
     [self->lock unlock];
 }

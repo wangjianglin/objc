@@ -61,7 +61,6 @@
 		3EA8AD301B8442890043922A /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA8ACFB1B8442890043922A /* Constants.m */; };
 		3EA8AD311B8442890043922A /* Constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ACFC1B8442890043922A /* Constants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EA8AD321B8442890043922A /* https.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EA8ACFD1B8442890043922A /* https.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3EA8AFD91B84826B0043922A /* LinUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EA8AFD81B84826B0043922A /* LinUtil.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,8 +131,6 @@
 		3EA8ACFB1B8442890043922A /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		3EA8ACFC1B8442890043922A /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		3EA8ACFD1B8442890043922A /* https.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = https.h; sourceTree = "<group>"; };
-		3EA8AD331B8442B80043922A /* LinUtil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LinUtil.framework; path = "../../util/util/build/Debug-iphoneos/LinUtil.framework"; sourceTree = "<group>"; };
-		3EA8AFD81B84826B0043922A /* LinUtil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LinUtil.framework; path = "../util/build/Debug-iphoneos/LinUtil.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +138,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EA8AFD91B84826B0043922A /* LinUtil.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,8 +169,6 @@
 		3EA8AC971B84400A0043922A = {
 			isa = PBXGroup;
 			children = (
-				3EA8AFD81B84826B0043922A /* LinUtil.framework */,
-				3EA8AD331B8442B80043922A /* LinUtil.framework */,
 				3EA8ACA31B84400A0043922A /* client */,
 				3EA8ACB01B84400A0043922A /* clientTests */,
 				3EA8ACA21B84400A0043922A /* Products */,

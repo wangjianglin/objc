@@ -101,6 +101,7 @@ static NSString *LinURLCachingHeader = @"X-Lin-Cache";
     NSString * absoluteString = [theUrl absoluteString];
     
     if([theRequest valueForHTTPHeaderField:LinURLCachingHeader] == nil && [absoluteString hasPrefix:@"http://"] &&
+       [theRequest valueForHTTPHeaderField:@"User-Agent"] != nil &&
        ([absoluteString hasSuffix:@".png"] ||
             [absoluteString hasSuffix:@".jpg"] ||
             [absoluteString hasSuffix:@".gif"])){

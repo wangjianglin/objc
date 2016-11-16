@@ -6,6 +6,7 @@
 //  Copyright (c) 2013年 ivan. All rights reserved.
 //
 
+#import "LinUtil/util.h"
 #import "QCheckBox.h"
 
 #define Q_CHECK_ICON_WH                    (15.0)
@@ -95,6 +96,70 @@
 //    [_userInfo release];
 //    _delegate = nil;
 //    [super dealloc];
+}
+
+@end
+
+
+@interface __QCheckBoxDelegateImpl3 : DelegateAction<QCheckBoxDelegate>{
+@private
+    void (^_didSelectedCheckBoxAction)(QCheckBox*);
+}
+@property void(^didSelectedCheckBoxAction)(QCheckBox*);
+-(id)initWithObject:(NSObject*)object;
+
+@end
+
+@implementation __QCheckBoxDelegateImpl3
+
+
+-(void (^)(QCheckBox *))didSelectedCheckBoxAction{
+    return self->_didSelectedCheckBoxAction;
+}
+
+-(void)setDidSelectedCheckBoxAction:(void (^)(QCheckBox *))didSelectedCheckBoxAction{
+    self->_didSelectedCheckBoxAction = didSelectedCheckBoxAction;
+}
+
+-(id)initWithObject:(NSObject *)object{
+    self = [super init];
+    if (self) {
+        self.withObjectSameLifecycle = object;
+    }
+    return self;
+}
+
+-(void)didSelectedCheckBox:(QCheckBox *)checkbox checked:(BOOL)checked{
+    if (self->_didSelectedCheckBoxAction != nil) {
+        self->_didSelectedCheckBoxAction(checkbox);
+    }
+}
+
+
+@end
+
+
+
+@implementation QCheckBox(Actions)
+
+-(__QCheckBoxDelegateImpl3*)actionDelegate{
+    
+    __QCheckBoxDelegateImpl3 * delegate = nil;
+    if ([self.delegate isKindOfClass:[__QCheckBoxDelegateImpl3 class]]){
+        delegate = self.delegate;
+    }else{
+        delegate = [[__QCheckBoxDelegateImpl3 alloc] initWithObject:self];
+        self.delegate = delegate;
+    }
+    return delegate;
+}
+
+-(void (^)(QCheckBox *))didSelectedCheckBoxAction{
+    return self.actionDelegate.didSelectedCheckBoxAction;
+}
+
+-(void)setDidSelectedCheckBoxAction:(void (^)(QCheckBox *))didSelectedCheckBoxAction{
+    self.actionDelegate.didSelectedCheckBoxAction = didSelectedCheckBoxAction;
 }
 
 @end

@@ -23,7 +23,10 @@
 
 +(NSString*)url:(HttpCommunicateImpl*)impl pack:(HttpPackage*)pack{
     
-    
+    if([pack.url hasPrefix:@"http://"]
+       ||[pack.url hasPrefix:@"https://"]){
+        return pack.url;
+    }
 //    NSString * curl = impl.commUrl;
     NSMutableString * curl = [[NSMutableString alloc] init];
     [curl appendString:impl.commUrl];

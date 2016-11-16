@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class MRProgressOverlayView;
+
+
+/** (MRProgressOverlayViewStopBlock) */
+typedef void(^MRProgressOverlayViewStopBlock)(MRProgressOverlayView *progressOverlayView);
+
 /** (MRProgressOverlayViewMode) */
 typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
     /** Progress is shown using a large round activity indicator view. (MRActivityIndicatorView) This is the default. */
@@ -56,6 +63,18 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
 + (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode animated:(BOOL)animated;
 
 /**
+ Creates a new overlay, adds it to provided view and shows it. The counterpart to this method is dismissOverlayForView:animated.
+ 
+ @param view The view that the overlay will be added to
+ @param title Title label text
+ @param mode Visualization mode
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @param stopBlock Block, which will be called when stop button is tapped.
+ @return A reference to the created overlay.
+ */
++ (instancetype)showOverlayAddedTo:(UIView *)view title:(NSString *)title mode:(MRProgressOverlayViewMode)mode animated:(BOOL)animated stopBlock:(MRProgressOverlayViewStopBlock)stopBlock;
+
+/**
  Finds the top-most overlay subview and hides it. The counterpart to this method is showOverlayAddedTo:animated:.
  
  @param view The view that is going to be searched for a overlay subview.
@@ -65,6 +84,16 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
 + (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated;
 
 /**
+ Finds the top-most overlay subview and hides it. The counterpart to this method is showOverlayAddedTo:animated:.
+ 
+ @param view The view that is going to be searched for a overlay subview.
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @param completionBlock block will be called, when the animation has finished.
+ @return YES if a overlay was found and removed, NO otherwise.
+ */
++ (BOOL)dismissOverlayForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock;
+
+/**
  Finds all the overlay subviews and hides them.
  
  @param view The view that is going to be searched for overlay subviews.
@@ -72,6 +101,16 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  @return the number of overlays found and removed.
  */
 + (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated;
+
+/**
+ Finds all the overlay subviews and hides them.
+ 
+ @param view The view that is going to be searched for overlay subviews.
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @param completionBlock block will be called, when the animation has finished.
+ @return the number of overlays found and removed.
+ */
++ (NSUInteger)dismissAllOverlaysForView:(UIView *)view animated:(BOOL)animated completion:(void(^)())completionBlock;
 
 /**
  Finds the top-most overlay subview and returns it.
@@ -118,7 +157,7 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  By default "Loading ...".
  This will automatically call setTitleLabelAttributedText: with current string attributes.
  */
-@property (nonatomic, strong) NSString *titleLabelText;
+@property (nonatomic, strong) NSString *titleLabelText UI_APPEARANCE_SELECTOR;
 
 /**
  Title label attributed text.
@@ -133,7 +172,7 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  Attention:
  Never set titleLabel.text manually. This would unset titleLabel.attributedText where the layout relies on.
  */
-@property (readonly) UILabel *titleLabel;
+@property (readonly, weak) UILabel *titleLabel;
 
 /**
  Mode view.
@@ -143,6 +182,14 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  with a new UIView instance. You should make sure to call setMode: first. You are responsible to set the frame size.
  */
 @property (nonatomic, strong) UIView *modeView;
+
+/**
+ Block, which will be called when stop button is tapped.
+ 
+ Use this to set a block, which is callend when UIControlEventTouchUpInside is fired on the mode view's stop button,
+ if available. The receiver will not be hidden or dismissed, automatically.
+ */
+@property (nonatomic, copy) MRProgressOverlayViewStopBlock stopBlock;
 
 /**
  Change the tint color of the mode views.
@@ -183,5 +230,13 @@ typedef NS_ENUM(NSUInteger, MRProgressOverlayViewMode){
  @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
  */
 - (void)dismiss:(BOOL)animated;
+
+/**
+ Hide the progress view and remove on animation completion from the view hierachy.
+ 
+ @param animated Specify YES to animate the transition or NO if you do not want the transition to be animated.
+ @param completionBlock block will be called, when the animation has finished.
+ */
+- (void)dismiss:(BOOL)animated completion:(void(^)())completionBlock;
 
 @end

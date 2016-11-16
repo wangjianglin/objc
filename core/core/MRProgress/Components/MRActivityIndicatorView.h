@@ -7,16 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MRStopableView.h"
 
 
 /**
  Use an activity indicator to show that a task is in progress. An activity indicator appears as a circle slice that is
  either spinning or stopped.
  */
-@interface MRActivityIndicatorView : UIControl {
+@interface MRActivityIndicatorView : UIView<MRStopableView> {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-interface-ivars"
 @package
     BOOL _animating;
+#pragma clang diagnostic pop
 }
+
+/**
+ A float value to indicate how thick the line of the activivity indicator is.
+ 
+ The default value is 2.f. 
+ */
+@property (nonatomic) CGFloat lineWidth UI_APPEARANCE_SELECTOR;
 
 /**
  A Boolean value that controls whether the receiver is hidden when the animation is stopped.

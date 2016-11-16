@@ -46,4 +46,11 @@ typedef NS_ENUM(NSInteger, QCheckBoxType)
 
 @end
 
+@interface QCheckBox(Actions)
+
+@property void(^didSelectedCheckBoxAction)(QCheckBox*);
+
+@end
+
+
 

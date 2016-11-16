@@ -9,25 +9,35 @@
 #import <QuartzCore/QuartzCore.h>
 #import "MRCircularProgressView.h"
 #import "MRProgressHelper.h"
-#import "MRWeakProxy.h"
+#import "MRStopButton.h"
+
+
+static NSString *const MRCircularProgressViewProgressAnimationKey = @"MRCircularProgressViewProgressAnimationKey";
 
 
 @interface MRCircularProgressView ()
 
 @property (nonatomic, strong, readwrite) NSNumberFormatter *numberFormatter;
+@property (nonatomic, strong, readwrite) NSTimer *valueLabelUpdateTimer;
 
 @property (nonatomic, weak, readwrite) UILabel *valueLabel;
-@property (nonatomic, weak, readwrite) UIView *stopView;
-
-@property (nonatomic, assign, readwrite) float fromProgress;
-@property (nonatomic, assign, readwrite) float toProgress;
-@property (nonatomic, assign, readwrite) CFTimeInterval startTime;
-@property (nonatomic, strong, readwrite) CADisplayLink *displayLink;
+@property (nonatomic, weak, readwrite) MRStopButton *stopButton;
 
 @end
 
 
-@implementation MRCircularProgressView
+@implementation MRCircularProgressView {
+    int _valueLabelProgressPercentDifference;
+}
+@dynamic progress;
+
+@synthesize stopButton = _stopButton;
+
++ (void)load {
+    [self.appearance setAnimationDuration:0.3];
+    [self.appearance setBorderWidth:2.0];
+    [self.appearance setLineWidth:2.0];
+}
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -54,20 +64,15 @@
 }
 
 - (void)commonInit {
-    self.animationDuration = 0.3;
-    self.progress = 0;
-    
-    [self addTarget:self action:@selector(didTouchDown) forControlEvents:UIControlEventTouchDown];
-    [self addTarget:self action:@selector(didTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
+    self.isAccessibilityElement = YES;
+    self.accessibilityLabel = NSLocalizedString(@"Determinate Progress", @"Accessibility label for circular progress view");
+    self.accessibilityTraits = UIAccessibilityTraitUpdatesFrequently;
     
     NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
     self.numberFormatter = numberFormatter;
     numberFormatter.numberStyle = NSNumberFormatterPercentStyle;
     numberFormatter.locale = NSLocale.currentLocale;
     
-    self.layer.borderWidth = 2.0f;
-    
-    self.shapeLayer.lineWidth = 2.0f;
     self.shapeLayer.fillColor = UIColor.clearColor.CGColor;
     
     UILabel *valueLabel = [UILabel new];
@@ -77,12 +82,38 @@
     valueLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:valueLabel];
     
-    UIControl *stopView = [UIControl new];
-    self.stopView = stopView;
-    [self addSubview:stopView];
+    MRStopButton *stopButton = [MRStopButton new];
+    [self addSubview:stopButton];
+    self.stopButton = stopButton;
     
-    [self mayStopDidChange];
+    self.mayStop = NO;
+    
+    self.progress = 0;
+    
+    [self tintColorDidChange];
 }
+
+
+#pragma mark - Properties
+
+- (CGFloat)borderWidth {
+    return self.shapeLayer.borderWidth;
+}
+
+- (void)setBorderWidth:(CGFloat)borderWidth {
+    self.shapeLayer.borderWidth = borderWidth;
+}
+
+- (CGFloat)lineWidth {
+    return self.shapeLayer.lineWidth;
+}
+
+- (void)setLineWidth:(CGFloat)lineWidth {
+    self.shapeLayer.lineWidth = lineWidth;
+}
+
+
+#pragma mark - Layout
 
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -90,34 +121,25 @@
     const CGFloat offset = 4;
     CGRect valueLabelRect = self.bounds;
     valueLabelRect.origin.x += offset;
-    valueLabelRect.size.width -= offset;
+    valueLabelRect.size.width -= 2*offset;
     self.valueLabel.frame = valueLabelRect;
     
     self.layer.cornerRadius = self.frame.size.width / 2.0f;
     self.shapeLayer.path = [self layoutPath].CGPath;
     
-    CGFloat stopViewSizeValue = MIN(self.bounds.size.width, self.bounds.size.height);
-    CGSize stopViewSize = CGSizeMake(stopViewSizeValue, stopViewSizeValue);
-    const CGFloat stopViewSizeRatio = 0.35;
-    CGRect stopViewFrame = CGRectInset(MRCenterCGSizeInCGRect(stopViewSize, self.bounds),
-                                       self.bounds.size.width * stopViewSizeRatio,
-                                       self.bounds.size.height * stopViewSizeRatio);
-    if (self.tracking && self.touchInside) {
-        stopViewFrame = CGRectInset(stopViewFrame,
-                                    self.bounds.size.width * 0.033,
-                                    self.bounds.size.height * 0.033);
-    }
-    self.stopView.frame = stopViewFrame;
+    self.stopButton.frame = [self.stopButton frameThatFits:self.bounds];
 }
 
 - (UIBezierPath *)layoutPath {
     const double TWO_M_PI = 2.0 * M_PI;
     const double startAngle = 0.75 * TWO_M_PI;
-    const double endAngle = startAngle + TWO_M_PI * self.progress;
+    const double endAngle = startAngle + TWO_M_PI;
     
     CGFloat width = self.frame.size.width;
+    CGFloat borderWidth = self.borderWidth;
+    CGFloat lineWidth = self.lineWidth;
     return [UIBezierPath bezierPathWithArcCenter:CGPointMake(width/2.0f, width/2.0f)
-                                          radius:width/2.0f - 2.5f
+                                          radius:(width - lineWidth - borderWidth)/2.0f
                                       startAngle:startAngle
                                         endAngle:endAngle
                                        clockwise:YES];
@@ -132,46 +154,19 @@
     self.shapeLayer.strokeColor = tintColor.CGColor;
     self.layer.borderColor = tintColor.CGColor;
     self.valueLabel.textColor = tintColor;
-    self.stopView.backgroundColor = tintColor;
+    self.stopButton.tintColor = tintColor;
 }
 
 
-#pragma mark - May stop implementation
+#pragma mark - MRStopableView's implementation
 
 - (void)setMayStop:(BOOL)mayStop {
-    _mayStop = mayStop;
-    [self mayStopDidChange];
+    self.stopButton.hidden = !mayStop;
+    self.valueLabel.hidden = mayStop;
 }
 
-- (void)mayStopDidChange {
-    self.enabled = self.mayStop;
-    self.stopView.hidden = !self.mayStop;
-    self.valueLabel.hidden = self.mayStop;
-}
-
-- (void)didTouchDown {
-   [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-       [self layoutSubviews];
-   } completion:nil];
-}
-
-- (void)didTouchUpInside {
-    [UIView animateWithDuration:0.2 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        [self layoutSubviews];
-    } completion:nil];
-}
-
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    UIView *hitView = [super hitTest:point withEvent:event];
-    if (hitView == self.stopView) {
-        // Allow hits inside stop view
-        return self;
-    } else if (hitView == self) {
-        // Ignore hits inside whole circular view
-        return nil;
-    }
-    // Allow all other subviews (external?)
-    return hitView;
+- (BOOL)mayStop {
+    return !self.stopButton.hidden;
 }
 
 
@@ -180,47 +175,39 @@
 - (void)setProgress:(float)progress {
     NSParameterAssert(progress >= 0 && progress <= 1);
     
-    // Stop running animation
-    if (self.displayLink) {
-        [self.displayLink removeFromRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
-        self.displayLink = nil;
-    }
+    [self stopAnimation];
     
     _progress = progress;
     
     [self updateProgress];
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self);
 }
 
 - (void)updateProgress {
     [self updatePath];
-    [self updateLabel];
+    [self updateLabel:self.progress];
 }
 
 - (void)updatePath {
-    self.shapeLayer.path = [self layoutPath].CGPath;
+    self.shapeLayer.strokeEnd = self.progress;
 }
 
-- (void)updateLabel {
-    self.valueLabel.text = [self.numberFormatter stringFromNumber:@(self.progress)];
+- (void)updateLabel:(float)progress {
+    self.valueLabel.text = [self.numberFormatter stringFromNumber:@(progress)];
+    self.accessibilityValue = self.valueLabel.text;
 }
 
 - (void)setProgress:(float)progress animated:(BOOL)animated {
     if (animated) {
-        if (self.progress == progress) {
+        if (ABS(self.progress - progress) < CGFLOAT_MIN) {
             return;
         }
         
-        if (self.displayLink) {
-            // Reuse current display link and manipulate animation params
-            self.startTime = CACurrentMediaTime();
-            self.fromProgress = self.progress;
-            self.toProgress = progress;
-        } else {
-            [self animateToProgress:progress];
-        }
+        [self animateToProgress:progress];
     } else {
         self.progress = progress;
     }
+    UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, self);
 }
 
 - (void)setAnimationDuration:(CFTimeInterval)animationDuration {
@@ -229,40 +216,56 @@
 }
 
 - (void)animateToProgress:(float)progress {
-    self.fromProgress = self.progress;
-    self.toProgress = progress;
-    self.startTime = CACurrentMediaTime();
+    [self stopAnimation];
     
-    [self.displayLink removeFromRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
-    self.displayLink = [CADisplayLink displayLinkWithTarget:[MRWeakProxy weakProxyWithTarget:self] selector:@selector(animateFrame:)];
-    [self.displayLink addToRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
+    // Add shape animation
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    animation.duration = self.animationDuration;
+    animation.fromValue = @(self.progress);
+    animation.toValue = @(progress);
+    animation.delegate = self;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    [self.shapeLayer addAnimation:animation forKey:MRCircularProgressViewProgressAnimationKey];
+    
+    // Add timer to update valueLabel
+    _valueLabelProgressPercentDifference = (progress - self.progress) * 100;
+    CFTimeInterval timerInterval =  self.animationDuration / ABS(_valueLabelProgressPercentDifference);
+    self.valueLabelUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:timerInterval
+                                                                  target:self
+                                                                selector:@selector(onValueLabelUpdateTimer:)
+                                                                userInfo:nil
+                                                                 repeats:YES];
+    
+    
+    _progress = progress;
 }
 
-- (void)animateFrame:(CADisplayLink *)displayLink {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        CGFloat d = (displayLink.timestamp - self.startTime) / self.animationDuration;
-        
-        if (d >= 1.0) {
-            // Order is important! Otherwise concurrency will cause errors, because setProgress: will detect an
-            // animation in progress and try to stop it by itself.
-            [self.displayLink removeFromRunLoop:NSRunLoop.mainRunLoop forMode:NSRunLoopCommonModes];
-            self.displayLink = nil;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.progress = self.toProgress;
-            });
-            
-            return;
-        }
-        
-        _progress = self.fromProgress + d * (self.toProgress - self.fromProgress);
-        UIBezierPath *path = [self layoutPath];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.shapeLayer.path = path.CGPath;
-            [self updateLabel];
-        });
-    });
+- (void)stopAnimation {
+    // Stop running animation
+    [self.layer removeAnimationForKey:MRCircularProgressViewProgressAnimationKey];
+    
+    // Stop timer
+    [self.valueLabelUpdateTimer invalidate];
+    self.valueLabelUpdateTimer = nil;
+}
+
+- (void)onValueLabelUpdateTimer:(NSTimer *)timer {
+    if (_valueLabelProgressPercentDifference > 0) {
+        _valueLabelProgressPercentDifference--;
+    } else {
+        _valueLabelProgressPercentDifference++;
+    }
+    
+    [self updateLabel:self.progress - (_valueLabelProgressPercentDifference / 100.0f)];
+}
+
+
+#pragma mark - CAAnimationDelegate
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    [self updateProgress];
+    [self stopAnimation];
 }
 
 @end
