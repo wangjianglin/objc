@@ -325,6 +325,10 @@
         rString = @"{}";
     }
     
+    rString = [rString stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"];
+    rString = [rString stringByReplacingOccurrencesOfString:@"\r" withString:@"\\r"];
+    rString = [rString stringByReplacingOccurrencesOfString:@"\t" withString:@"\\t"];
+    
     return rString;
 }
 

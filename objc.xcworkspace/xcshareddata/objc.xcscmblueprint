@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "43BACA531BACA6667D2596FB6353E05402E7795F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "64bfdf20-a972-4181-ba69-00ede5fd8fba++8646" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "64bfdf20-a972-4181-ba69-00ede5fd8fba++8646" : 9223372036854775807,
+    "43BACA531BACA6667D2596FB6353E05402E7795F" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A829D64F-2555-4170-BD20-72BDABFD5B30",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "64bfdf20-a972-4181-ba69-00ede5fd8fba++8646" : "..\/..\/..\/work\/code\/internal",
+    "43BACA531BACA6667D2596FB6353E05402E7795F" : "objc\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "objc",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "objc.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/wangjianglin\/objc.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "43BACA531BACA6667D2596FB6353E05402E7795F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/src.feicuibaba.com",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "64bfdf20-a972-4181-ba69-00ede5fd8fba++8646"
+    }
+  ]
+}
