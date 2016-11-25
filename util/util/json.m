@@ -11,7 +11,7 @@
 #import "json.h"
 
 @interface Json(){
-   // NSObject * _value;
+    // NSObject * _value;
 }
 
 @end
@@ -78,9 +78,9 @@
 //    public init(_ obj:AnyObject) {self._value = obj}
 //    /// pass the JSON object for another instance
 //    public init(_ json:Json){ self._value = json._value; }
-//    
+//
 //    public var description:String { return toString() }
-//    
+//
 //    public func copyDescription()->String{return toString();}
 //}
 //
@@ -113,18 +113,18 @@
     }else{
         self = [self initWithObject:error];
     }
-//    self = [super init];
-//    if (self) {
-//        
-//        //        var obj:AnyObject? = NSJSONSerialization.JSONObjectWithData(
-//        //            data, options:nil, error:&err
-//        //        )
-//        //        self.init(err != nil ? err! : obj!)
-//    }
+    //    self = [super init];
+    //    if (self) {
+    //
+    //        //        var obj:AnyObject? = NSJSONSerialization.JSONObjectWithData(
+    //        //            data, options:nil, error:&err
+    //        //        )
+    //        //        self.init(err != nil ? err! : obj!)
+    //    }
     return self;
 }
 -(id)initWithString:(NSString*)string{
-//    let enc:NSStringEncoding = NSUTF8StringEncoding
+    //    let enc:NSStringEncoding = NSUTF8StringEncoding
     //        self.init(data: string.dataUsingEncoding(enc)!)
     
     self = [self initWithData:[string dataUsingEncoding:NSUTF8StringEncoding]];
@@ -146,7 +146,7 @@
     return self;
 }
 -(id)initWithUrl:(NSString*)url{
-
+    
     NSURL * nsurl = [[NSURL alloc] initWithString:url];
     if (nsurl != nil) {
         self = [self initWithNSURL:nsurl];
@@ -160,19 +160,19 @@
     return [[Json alloc] initWithUrl:url];
 }
 +(NSString*)stringify:(NSObject*)obj pretty:(BOOL)pretty{
-//    if !NSJSONSerialization.isValidJSONObject(obj) {
-//        //            Json(NSError(
-//        //                domain:"JSONErrorDomain",
-//        //                code:422,
-//        //                userInfo:[NSLocalizedDescriptionKey: "not an JSON object"]
-//        //                ))
-//        //            return nil
-//        //        }
-//        //        return Json(obj).toString(pretty:pretty)
+    //    if !NSJSONSerialization.isValidJSONObject(obj) {
+    //        //            Json(NSError(
+    //        //                domain:"JSONErrorDomain",
+    //        //                code:422,
+    //        //                userInfo:[NSLocalizedDescriptionKey: "not an JSON object"]
+    //        //                ))
+    //        //            return nil
+    //        //        }
+    //        //        return Json(obj).toString(pretty:pretty)
     if (![NSJSONSerialization isValidJSONObject:obj]) {
-//        NSDictionary * dic = [[NSDictionary alloc] init];
-//        [dic setValue:@"not an JSON object" forKey:NSLocalizedDescriptionKey];
-//        NSError * error = [[NSError alloc] initWithDomain:@"JSONErrorDomain" code:422 userInfo:dic];
+        //        NSDictionary * dic = [[NSDictionary alloc] init];
+        //        [dic setValue:@"not an JSON object" forKey:NSLocalizedDescriptionKey];
+        //        NSError * error = [[NSError alloc] initWithDomain:@"JSONErrorDomain" code:422 userInfo:dic];
         return nil;
     }
     return nil;
@@ -312,7 +312,7 @@
     
     NSError * error = [[NSError alloc] initWithDomain:@"JsonErrorDomain" code:404 userInfo:@{NSLocalizedDescriptionKey:[[NSString alloc] initWithFormat:@"[%lu] is out of range",(unsigned long)index]}];
     return [[Json alloc] initWithObject:error];
-
+    
 }
 
 - (void)setIntValue:(int)_value forName:(NSString *)name{
@@ -336,7 +336,7 @@
 //- (void)setValue:(NSString*)name value:(NSObject *)value{
 
 - (void)setValue:(NSObject*)_value forName:(NSString *)name{
-
+    
     
     if (_value == nil) {
         [self remove:name];
@@ -360,10 +360,10 @@
         return self;
     }
     if (!self.isDictionary) {
-//        NSDictionary * dic = [[NSDictionary alloc] init];
-//        [dic setValue:@"not an array" forKey:NSLocalizedDescriptionKey];
-//        NSError * error = [[NSError alloc] initWithDomain:@"JsonErrorDomain" code:500 userInfo:dic];
-//        return [[Json alloc] initWithObject:error];
+        //        NSDictionary * dic = [[NSDictionary alloc] init];
+        //        [dic setValue:@"not an array" forKey:NSLocalizedDescriptionKey];
+        //        NSError * error = [[NSError alloc] initWithDomain:@"JsonErrorDomain" code:500 userInfo:dic];
+        //        return [[Json alloc] initWithObject:error];
         return nil;
     }
     NSDictionary * dic = self.asDictionary;
@@ -382,22 +382,22 @@
 }
 //- (NSObject*)data;
 - (NSString*)type{
-//    switch _value {
+    //    switch _value {
     if ([self isKindOfClass:[NSError class]]) {
         return @"NSError";
     }
     if (self.value == nil || [self.value isKindOfClass:[NSNull class]]) {
         return @"NSError";
     }
-//    case is NSError:        return "NSError"
-//    case is NSNull:         return "NSNull"
-//    case let o as NSNumber:
-//        switch String.fromCString(o.objCType)! {
-//        case "c", "C":              return "Bool"
-//        case "q", "l", "i", "s":    return "Int"
-//        case "Q", "L", "I", "S":    return "UInt"
-//        default:                    return "Double"
-//        }
+    //    case is NSError:        return "NSError"
+    //    case is NSNull:         return "NSNull"
+    //    case let o as NSNumber:
+    //        switch String.fromCString(o.objCType)! {
+    //        case "c", "C":              return "Bool"
+    //        case "q", "l", "i", "s":    return "Int"
+    //        case "Q", "L", "I", "S":    return "UInt"
+    //        default:                    return "Double"
+    //        }
     if ([self.value isKindOfClass:[NSNumber class]]) {
         NSNumber * num = (NSNumber *)self.value;
         const char * str = num.objCType;
@@ -418,21 +418,21 @@
     if ([self.value isKindOfClass:[NSString class]]) {
         return @"String";
     }
-//    case is NSString:               return "String"
-//    case is NSArray:                return "Array"
+    //    case is NSString:               return "String"
+    //    case is NSArray:                return "Array"
     if ([self.value isKindOfClass:[NSArray class]]) {
         return @"Array";
     }
-//    case is NSDictionary:           return "Dictionary"
+    //    case is NSDictionary:           return "Dictionary"
     if ([self.value isKindOfClass:[NSDictionary class]]) {
         return @"Dictionary";
     }
-//    case is NSDate:              return "Date"
+    //    case is NSDate:              return "Date"
     if ([self.value isKindOfClass:[NSDate class]]) {
         return @"Date";
     }
-//    default:                        return "NSError"
-//    }
+    //    default:                        return "NSError"
+    //    }
     return @"NSError";
 }
 -(BOOL)isError{
@@ -556,7 +556,7 @@
 }
 
 -(NSNumber*)asNumber{
-//    return [self asDouble];
+    //    return [self asDouble];
     if(self.isBool){
         return [[NSNumber alloc] initWithBool:self.asBool];
     }
@@ -633,7 +633,7 @@
     return nil;
 }
 //-(Json*)asObject:(Json *(^)(Json *))itemCreate{
-//    
+//
 //}
 //
 //@property(atomic,readonly)int length;
@@ -686,13 +686,13 @@
 }
 
 //    public func toString(pretty:Bool=false)->String {
-//        
+//
 //        if let str = toStringJson(self){
 //            return str;
 //        }
 //        return "";
 //        //println("start.");
-//        
+//
 
 //    }
 //
@@ -708,9 +708,9 @@
         }
     }
     
-//    if (v respondsToSelector:@selector(jsonSkip:)) {
-//        return nil;
-//    }
+    //    if (v respondsToSelector:@selector(jsonSkip:)) {
+    //        return nil;
+    //    }
     Json * json;
     if (v == nil || [v isKindOfClass:[NSNull class]]) {
         t = -1;
@@ -739,7 +739,7 @@
             t = 4;
         }
     }
-//    NSDateFormatter * dateFormatter;
+    //    NSDateFormatter * dateFormatter;
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     switch (t) {
@@ -753,22 +753,32 @@
             string = [Json toArrayString:(NSArray*)v];
             break;
         case 2:
-//            string = [Json toDicString:(NSDictionary*)v json:json];
+            //            string = [Json toDicString:(NSDictionary*)v json:json];
             string = [Json toDicString:(NSDictionary*)v];
             break;
         case 3:
             string = [[NSString alloc] initWithFormat:@"%@",v];
+            string = [string stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
             string = [string stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+            
+            string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"];
+            string = [string stringByReplacingOccurrencesOfString:@"\r" withString:@"\\r"];
+            string = [string stringByReplacingOccurrencesOfString:@"\t" withString:@"\\t"];
             string = [[NSString alloc] initWithFormat:@"\"%@\"",string];
             break;
         case 4:
-//            NSDate * date = (NSDate*)v;
+            //            NSDate * date = (NSDate*)v;
             string = [dateFormatter stringFromDate:(NSDate*)v];
             break;
         default:
-//            string = [[NSString alloc] initWithFormat:@"%@",v];
+            //            string = [[NSString alloc] initWithFormat:@"%@",v];
             string = [[NSString alloc] initWithFormat:@"%@",v];
+            string = [string stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"];
             string = [string stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+            
+            string = [string stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"];
+            string = [string stringByReplacingOccurrencesOfString:@"\r" withString:@"\\r"];
+            string = [string stringByReplacingOccurrencesOfString:@"\t" withString:@"\\t"];
             break;
     }
     return string;
@@ -802,7 +812,7 @@
 //            if let s = toStringJson(item){
 //                string += s;
 //            }
-//            
+//
 //            if index < v.count - 1 {
 //                string += ",";
 //            }
@@ -813,7 +823,7 @@
 //
 //+(NSString*)toDicString:(NSDictionary *)v json:(Json*)json{
 +(NSString*)toDicString:(NSDictionary *)v{
-
+    
     
     NSMutableString * buffer = [[NSMutableString alloc] init];
     [buffer appendString:@"{"];
@@ -827,13 +837,13 @@
     NSObject * value;
     for (id key in [v keyEnumerator]) {
         
-//        if (json != nil) {
-            if ([v respondsToSelector:jsonSkip]) {
-                if ([v performSelector:jsonSkip withObject:v withObject:key]){
-                    continue;
-                }
+        //        if (json != nil) {
+        if ([v respondsToSelector:jsonSkip]) {
+            if ([v performSelector:jsonSkip withObject:v withObject:key]){
+                continue;
             }
-//        }
+        }
+        //        }
         value = [v objectForKey:key];
         itemString = [Json toStringJson:value];
         if (itemString == nil) {
@@ -852,7 +862,7 @@
     return [[NSString alloc] initWithString:buffer];
 }
 //    private func toDicString(v:Dictionary<String,AnyObject>)->String{
-//        
+//
 //        var string:String = "{";
 //        var n:Int = 0;
 //        for (name,item) in v{
@@ -860,9 +870,9 @@
 //                if n != 0 {
 //                    string += ",";
 //                }
-//                
+//
 //                n++;
-//                
+//
 //                string += "\"\(name)\":"
 //                string += s;
 //            }
@@ -870,9 +880,9 @@
 //        string += "}";
 //        return string;
 //    }
-//    
+//
 ////    public var description:String { return toString() }
-////    
+////
 ////    public func copyDescription()->String{return toString();}
 //}
 //
@@ -892,14 +902,14 @@
 
 //extension Json{
 //    public func toParams()->Dictionary<String,String>{
-//        
+//
 ////        var dic = Dictionary<String,String>();
-//        
+//
 //        return self.toParamsJson("", v: self);
-//        
-//        
+//
+//
 ////        return dic;
-//        
+//
 //    }
 //
 +(NSDictionary*)toParamsJson:(NSString*)pre value:(NSObject*)v includeNull:(BOOL)includeNull{
@@ -950,16 +960,16 @@
     NSString * stringItem;
     switch (t) {
         case -1:
-//            string = @"null";
+            //            string = @"null";
             [dic setValue:@"null" forKey:pre];
             break;
         case 0:
-//            string = [[NSString alloc] initWithFormat:@"%@",v];
+            //            string = [[NSString alloc] initWithFormat:@"%@",v];
             [dic setValue:[[NSString alloc] initWithFormat:@"%@",v] forKey:pre];
             break;
         case 1:
-//            string = [Json toArrayString:(NSArray*)v];toArrayParams
-//            NSDictionary * tmp = [Json toArrayParams:pre value:v];
+            //            string = [Json toArrayString:(NSArray*)v];toArrayParams
+            //            NSDictionary * tmp = [Json toArrayParams:pre value:v];
             tmpDic = [Json toArrayParams:pre value:(NSArray*)v includeNull:includeNull];
             if (tmpDic != nil) {
                 for (NSString * key in [tmpDic keyEnumerator]) {
@@ -978,12 +988,12 @@
                     [dic setValue:[tmpDic objectForKey:key] forKey:key];
                 }
             }
-//            string = [Json toDicString:(NSDictionary*)v];
+            //            string = [Json toDicString:(NSDictionary*)v];
             break;
         case 3:
-//            string = [[NSString alloc] initWithFormat:@"\"%@\"",v];
+            //            string = [[NSString alloc] initWithFormat:@"\"%@\"",v];
             stringItem = [[NSString alloc] initWithFormat:@"%@",v];
-//            stringItem = [stringItem stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+            //            stringItem = [stringItem stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
             
             [dic setValue:stringItem forKey:pre];
             
@@ -996,7 +1006,7 @@
             ////            [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
             //            NSDate * date = (NSDate*)v;
             ////            date
-//            string = @"";
+            //            string = @"";
             [dic setValue:[dateFormatter stringFromDate:(NSDate*)v] forKey:pre];
             break;
         default:
@@ -1056,7 +1066,7 @@
             [dic setValue:[itemDic objectForKey:key] forKey:key];
         }
     }
-
+    
     return dic;
 }
 //    private func toArrayParams(pre:String,v:[AnyObject])->Dictionary<String,String>{
