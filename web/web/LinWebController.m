@@ -111,7 +111,7 @@
     
     NSString * absoluteString = [theUrl absoluteString];
     
-    if([absoluteString rangeOfString:@":0000/"].length != 0){
+    if([absoluteString rangeOfString:@":0/"].length != 0){
         return YES;
     }
     return NO;

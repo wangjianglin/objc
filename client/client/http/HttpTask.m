@@ -1309,16 +1309,26 @@
 
 
 -(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler{
-    if (self.auth != nil) {
-        NSURLCredential * cred = self.auth(challenge);
-        if (cred != nil) {
-            completionHandler(NSURLSessionAuthChallengeUseCredential,cred);
-        }else{
-            completionHandler(NSURLSessionAuthChallengeRejectProtectionSpace,cred);
-        }
-    }else{
-        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling,nil);
+//    if (self.auth != nil) {
+//        NSURLCredential * cred = self.auth(challenge);
+//        if (cred != nil) {
+//            completionHandler(NSURLSessionAuthChallengeUseCredential,cred);
+//        }else{
+//            completionHandler(NSURLSessionAuthChallengeRejectProtectionSpace,cred);
+//        }
+//    }else{
+//        completionHandler(NSURLSessionAuthChallengePerformDefaultHandling,nil);
+//    }
+    if (!challenge) {
+        return;
     }
+    
+    
+    NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengeUseCredential;
+    NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+    
+    // 对于其他的challenges直接使用默认的验证方案
+    completionHandler(disposition,credential);
 }
 //        if let a = auth {
 //            let cred = a(challenge)
